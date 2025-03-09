@@ -1,24 +1,14 @@
-# README
+# Auto Eva Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup for Development:
+- `docker compose build`
+- `docker compose up`
 
-Things you may want to cover:
+## Setup for Production:
 
-* Ruby version
+- `echo "DATABASE_PASSWORD=your_secure_password" > .env`
+- `echo "SECRET_KEY_BASE=$(docker-compose exec web rails secret)" >> .env`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    ### Build and run
+    - `docker compose -f docker-compose.prod.yml build`
+    - `docker compose -f docker-compose.prod.yml up -d`
