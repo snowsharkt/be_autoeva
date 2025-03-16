@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1>Welcome to Auto Eva</h1>
+
+      <div class="mt-4">
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <%= link_to 'Go to Admin Dashboard', admin_root_path, class: 'btn btn-primary btn-lg' %>
+          <% else %>
+            <p>You are logged in as a regular user.</p>
+            <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
+          <% end %>
+        <% else %>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary btn-lg px-4 gap-3' %>
+            <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-outline-secondary btn-lg px-4' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

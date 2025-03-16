@@ -1,0 +1,74 @@
+<% content_for :page_title, 'User Details' %>
+
+<div class="d-flex justify-content-between mb-4">
+  <h3><%= @user.full_name %></h3>
+  <div>
+    <%= link_to 'Edit User', edit_admin_user_path(@user), class: 'btn btn-primary' %>
+    <%= link_to 'All Users', admin_users_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <th width="150">ID</th>
+            <td><%= @user.id %></td>
+          </tr>
+          <tr>
+            <th>First Name</th>
+            <td><%= @user.first_name %></td>
+          </tr>
+          <tr>
+            <th>Last Name</th>
+            <td><%= @user.last_name %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <th>Role</th>
+            <td><span class="badge <%= @user.admin? ? 'bg-danger' : 'bg-primary' %>"><%= @user.role %></span></td>
+          </tr>
+          <tr>
+            <th>Phone</th>
+            <td><%= @user.phone_number || '-' %></td>
+          </tr>
+          <tr>
+            <th>Sign In Count</th>
+            <td><%= @user.sign_in_count %></td>
+          </tr>
+          <tr>
+            <th>Current Sign In</th>
+            <td><%= @user.current_sign_in_at&.strftime("%b %d, %Y %H:%M") || '-' %></td>
+          </tr>
+          <tr>
+            <th>Last Sign In</th>
+            <td><%= @user.last_sign_in_at&.strftime("%b %d, %Y %H:%M") || '-' %></td>
+          </tr>
+          <tr>
+            <th>Created At</th>
+            <td><%= @user.created_at.strftime("%b %d, %Y %H:%M") %></td>
+          </tr>
+          <tr>
+            <th>Updated At</th>
+            <td><%= @user.updated_at.strftime("%b %d, %Y %H:%M") %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <!-- This area can be used for additional user data or related information -->
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">User Activity</h5>
+            <p>This section can be used for user logs, activity history, or related data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

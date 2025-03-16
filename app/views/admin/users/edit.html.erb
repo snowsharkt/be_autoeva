@@ -1,0 +1,11 @@
+<% content_for :page_title, 'Edit User' %>
+
+<div class="d-flex justify-content-between mb-4">
+  <h3>Edit User: <%= @user.full_name %></h3>
+  <div>
+    <%= link_to 'View User', admin_user_path(@user), class: 'btn btn-info' %>
+    <%= link_to 'All Users', admin_users_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
+
+<%= render 'form' %>

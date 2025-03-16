@@ -1,0 +1,70 @@
+<% content_for :page_title, 'Dashboard Overview' %>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Total Users</h5>
+        <p class="card-text fs-1"><%= @users_count %></p>
+        <a href="<%= admin_users_path %>" class="btn btn-primary">View All Users</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Admin Users</h5>
+        <p class="card-text fs-1"><%= @admins_count %></p>
+        <a href="<%= admin_users_path(role: 'admin') %>" class="btn btn-primary">View Admins</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Regular Users</h5>
+        <p class="card-text fs-1"><%= @users_count - @admins_count %></p>
+        <a href="<%= admin_users_path(role: 'user') %>" class="btn btn-primary">View Regular Users</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Recent Users</h5>
+      </div>
+      <div class="card-body">
+        <% recent_users = User.order(created_at: :desc).limit(5) %>
+        <% if recent_users.any? %>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Created</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% recent_users.each do |user| %>
+              <tr>
+                <td><%= user.full_name %></td>
+                <td><%= user.email %></td>
+                <td><span class="badge <%= user.admin? ? 'bg-danger' : 'bg-primary' %>"><%= user.role %></span></td>
+                <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p class="mb-0">No users found.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

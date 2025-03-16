@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link <%= current_page?(admin_root_path) ? 'active' : '' %>" href="<%= admin_root_path %>">
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= current_page?(admin_users_path) ? 'active' : '' %>" href="<%= admin_users_path %>">
+              Users
+            </a>
+          </li>
+          <!-- Add more sidebar items here as needed -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"><%= yield(:page_title) || 'Admin Dashboard' %></h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="dropdown">
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+              <%= current_user.full_name %>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item' %></li>
+              <li><%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <% if notice %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= notice %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= alert %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+  </div>
+</div>
+
+</body>
+</html>
