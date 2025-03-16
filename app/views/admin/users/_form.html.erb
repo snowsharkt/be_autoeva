@@ -1,0 +1,81 @@
+<%= form_with(model: [:admin, @user], local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= form.label :first_name, class: 'form-label' %>
+            <%= form.text_field :first_name, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= form.label :last_name, class: 'form-label' %>
+            <%= form.text_field :last_name, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= form.label :email, class: 'form-label' %>
+            <%= form.email_field :email, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= form.label :phone_number, class: 'form-label' %>
+            <%= form.text_field :phone_number, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= form.label :role, class: 'form-label' %>
+            <%= form.select :role, [['User', 'user'], ['Admin', 'admin']], {}, { class: 'form-select' } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= form.label :password, class: 'form-label' %>
+            <%= form.password_field :password, class: 'form-control', autocomplete: 'new-password' %>
+            <% if @user.persisted? %>
+              <div class="form-text">Leave blank if you don't want to change it</div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <%= form.label :password_confirmation, class: 'form-label' %>
+            <%= form.password_field :password_confirmation, class: 'form-control', autocomplete: 'new-password' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer d-flex justify-content-between">
+      <%= link_to 'Cancel', @user.new_record? ? admin_users_path : admin_user_path(@user), class: 'btn btn-secondary' %>
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

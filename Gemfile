@@ -65,3 +65,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'devise'
+gem 'devise-jwt'
+gem 'jsonapi-serializer'
+gem 'rack-cors'
+gem 'bootstrap', '~> 5.2.3'
+gem 'jquery-rails'
+gem 'sassc-rails'
