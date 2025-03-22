@@ -5,6 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
 
+  has_many :sale_posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :sale_post
+  has_many :reports, foreign_key: :reporter_id, dependent: :nullify
+  has_many :received_reports, as: :reportable, class_name: 'Report', dependent: :destroy
+
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, inclusion: { in: %w(user admin) }
 
