@@ -67,9 +67,10 @@ group :test do
 end
 
 gem 'devise'
-gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem 'rack-cors'
 gem 'bootstrap', '~> 5.2.3'
 gem 'jquery-rails'
 gem 'sassc-rails'
+
+gem "dotenv-rails", "~> 3.1"

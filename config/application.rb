@@ -23,5 +23,23 @@ module BeAutoEva
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore,
+      secure: Rails.env.production?, # Only allow HTTPS in production
+      httponly: true,               # Prevent JavaScript access
+      same_site: :lax               # Mitigate CSRF
+
+    # Protect from CSRF for cookie-based auth
+    config.action_controller.allow_forgery_protection = false
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:3000', 'https://autoeva.com'
+        resource '*',
+          headers: :any,
+          methods: [:get, :post, :put, :patch, :delete, :options, :head],
+          credentials: true
+      end
+    end
   end
 end
