@@ -188,7 +188,7 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 2.hours
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -310,16 +310,4 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-
-  # JWT Configuration
-  config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.jwt_secret_key || 'your_development_secret_key'
-    jwt.dispatch_requests = [
-      ['POST', %r{^/api/v1/login$}]
-    ]
-    jwt.revocation_requests = [
-      ['DELETE', %r{^/api/v1/logout$}]
-    ]
-    jwt.expiration_time = 1.day.to_i
-  end
 end
