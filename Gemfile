@@ -74,3 +74,10 @@ gem 'jquery-rails'
 gem 'sassc-rails'
 
 gem "dotenv-rails", "~> 3.1"
+gem 'rswag-api'
+gem 'rswag-ui'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rswag-specs'
+end
