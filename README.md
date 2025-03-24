@@ -1,6 +1,11 @@
 # Auto Eva Backend
 
+## API docs
+
+- Swagger: `http://localhost:3000/api-docs`
+
 ## Setup for Development:
+- Create `.env` file from `.env.example` and set the environment variables
 - `docker compose build`
 - `docker compose up`
 
