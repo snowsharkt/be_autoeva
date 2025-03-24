@@ -47,6 +47,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -73,3 +75,5 @@ gem 'rack-cors'
 gem 'bootstrap', '~> 5.2.3'
 gem 'jquery-rails'
 gem 'sassc-rails'
+gem 'rswag-api'
+gem 'rswag-ui'
