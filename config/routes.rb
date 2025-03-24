@@ -20,6 +20,10 @@ Rails.application.routes.draw do
       post 'sign_up', to: 'registrations#create'
       get 'current_user', to: 'sessions#show'
     end
+
+    resources :users, only: [:index, :show, :update, :destroy]
+    get 'profile', to: 'users#profile'
+    post 'change_password', to: 'users#change_password'
   end
 
   root to: 'home#index'

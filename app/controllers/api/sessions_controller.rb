@@ -1,6 +1,7 @@
 class Api::SessionsController < Devise::SessionsController
   respond_to :json
   skip_before_action :verify_authenticity_token
+  skip_before_action :verify_signed_out_user, only: [:destroy]
 
   # Sign in
   def create
@@ -30,10 +31,5 @@ class Api::SessionsController < Devise::SessionsController
     else
       render json: { user: nil }
     end
-  end
-
-  rescue_from StandardError do |e|
-    Rails.logger.error(e)
-    render json: { error: 'An unexpected error occurred' }, status: :internal_server_error
   end
 end
