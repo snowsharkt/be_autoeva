@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  include DeviseTokenAuth::Concerns::User
 
   has_many :sale_posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -13,6 +14,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, inclusion: { in: %w(user admin) }
+  validates :phone_number, presence: true, uniqueness: true
 
   def admin?
     role == 'admin'

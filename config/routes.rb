@@ -17,12 +17,7 @@ Rails.application.routes.draw do
 
   # API routes for authentication
   namespace :api do
-    devise_scope :user do
-      post 'sign_in', to: 'sessions#create'
-      delete 'sign_out', to: 'sessions#destroy'
-      post 'sign_up', to: 'registrations#create'
-      get 'current_user', to: 'sessions#show'
-    end
+    mount_devise_token_auth_for 'User', at: 'auth'
 
     resources :users, only: [:index, :show, :update, :destroy]
     get 'profile', to: 'users#profile'
