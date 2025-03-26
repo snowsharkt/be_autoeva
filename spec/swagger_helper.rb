@@ -22,32 +22,31 @@ RSpec.configure do |config|
         version: 'v1'
       },
       components: {
-        securitySchemes: {
-          cookie_auth: {
-            type: :apiKey,
-            in: :cookie,
-            name: 'session'
-          }
-        },
         schemas: {
           user: {
             type: :object,
             properties: {
               id: { type: :integer },
               email: { type: :string },
+              first_name: { type: :string },
+              last_name: { type: :string },
+              phone_number: { type: :string },
+              role: { type: :string, enum: ['user', 'admin'] },
               created_at: { type: :string, format: :datetime },
               updated_at: { type: :string, format: :datetime }
-            }
-          },
-          error: {
-            type: :object,
-            properties: {
-              message: { type: :string }
-            }
+            },
+            required: ['id', 'email', 'role']
+          }
+        },
+        securitySchemes: {
+          bearer_auth: {
+            type: :http,
+            scheme: :bearer,
+            bearerFormat: 'JWT',
+            description: 'Use the access-token, client, and uid headers for authentication'
           }
         }
       },
-      paths: {},
       servers: [
         {
           url: "#{ENV['API_URL'] || 'http://localhost:3000'}"
