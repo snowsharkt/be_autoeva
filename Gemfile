@@ -81,3 +81,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rswag-specs'
 end
+
+gem 'devise_token_auth'

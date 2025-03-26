@@ -4,11 +4,6 @@ info:
   title: API Documentation
   version: v1
 components:
-  securitySchemes:
-    cookie_auth:
-      type: apiKey
-      in: cookie
-      name: session
   schemas:
     user:
       type: object
@@ -17,21 +12,39 @@ components:
           type: integer
         email:
           type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone_number:
+          type: string
+        role:
+          type: string
+          enum:
+          - user
+          - admin
         created_at:
           type: string
           format: datetime
         updated_at:
           type: string
           format: datetime
-    error:
-      type: object
-      properties:
-        message:
-          type: string
+      required:
+      - id
+      - email
+      - role
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Use the access-token, client, and uid headers for authentication
+servers:
+- url: http://localhost:3000
 paths:
-  "/api/sign_up":
+  "/api/auth":
     post:
-      summary: Creates a user
+      summary: Registers a new user
       tags:
       - Authentication
       parameters: []
@@ -46,23 +59,32 @@ paths:
             schema:
               type: object
               properties:
-                user:
-                  type: object
-                  properties:
-                    email:
-                      type: string
-                      example: user@example.com
-                    password:
-                      type: string
-                      example: password123
-                    password_confirmation:
-                      type: string
-                      example: password123
-                  required:
-                  - email
-                  - password
-                  - password_confirmation
-  "/api/sign_in":
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: password123
+                password_confirmation:
+                  type: string
+                  example: password123
+                first_name:
+                  type: string
+                  example: John
+                last_name:
+                  type: string
+                  example: Doe
+                phone_number:
+                  type: string
+                  example: '1234567890'
+              required:
+              - email
+              - password
+              - password_confirmation
+              - first_name
+              - last_name
+              - phone_number
+  "/api/auth/sign_in":
     post:
       summary: Signs in a user
       tags:
@@ -71,8 +93,215 @@ paths:
       responses:
         '200':
           description: user signed in
+          headers:
+            access-token:
+              schema:
+                type: string
+              description: Authentication token
+            client:
+              schema:
+                type: string
+              description: Client identifier
+            uid:
+              schema:
+                type: string
+              description: User identifier (email)
         '401':
           description: invalid credentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: password123
+              required:
+              - email
+              - password
+  "/api/auth/validate_token":
+    get:
+      summary: Validates authentication token
+      tags:
+      - Authentication
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: token is valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    "$ref": "#/components/schemas/user"
+        '401':
+          description: token is invalid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Invalid login credentials
+  "/api/auth/sign_out":
+    delete:
+      summary: Signs out current user
+      tags:
+      - Authentication
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: signed out successfully
+        '404':
+          description: user not found
+  "/api/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a user
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      role:
+                        type: string
+                      created_at:
+                        type: string
+                        format: datetime
+                    required:
+                    - id
+                    - email
+                    - role
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User not found
+    put:
+      summary: Updates a user
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user updated
+        '403':
+          description: not authorized
+        '404':
+          description: user not found
+        '422':
+          description: invalid request
       requestBody:
         content:
           application/json:
@@ -82,103 +311,102 @@ paths:
                 user:
                   type: object
                   properties:
+                    first_name:
+                      type: string
+                      example: John
+                    last_name:
+                      type: string
+                      example: Doe
                     email:
                       type: string
-                      example: user@example.com
-                    password:
+                      example: john.doe@example.com
+                    role:
                       type: string
-                      example: password123
-                  required:
-                  - email
-                  - password
-  "/api/current_user":
-    get:
-      summary: Retrieves current user
-      tags:
-      - Authentication
-      security:
-      - cookie_auth: []
-      responses:
-        '200':
-          description: current user retrieved
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/user"
-        '401':
-          description: unauthorized
-  "/api/sign_out":
-    delete:
-      summary: Signs out current user
-      tags:
-      - Authentication
-      security:
-      - cookie_auth: []
-      responses:
-        '200':
-          description: signed out successfully
-  "/api/users":
-    get:
-      summary: Lists all users
-      tags:
-      - Users
-      security:
-      - cookie_auth: []
-      responses:
-        '200':
-          description: users found
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  "$ref": "#/components/schemas/user"
-  "/api/users/{id}":
-    parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type: integer
-    get:
-      summary: Retrieves a user
-      tags:
-      - Users
-      security:
-      - cookie_auth: []
-      responses:
-        '200':
-          description: user found
-          content:
-            application/json:
-              schema:
-                "$ref": "#/components/schemas/user"
-        '404':
-          description: user not found
+                      example: user
+                      description: Only admins can update role
   "/api/profile":
     get:
-      summary: Retrieves user profile
+      summary: Retrieves current user profile
       tags:
       - Users
       security:
-      - cookie_auth: []
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: profile retrieved
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/user"
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      role:
+                        type: string
+                      created_at:
+                        type: string
+                        format: datetime
         '401':
           description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
   "/api/change_password":
     post:
       summary: Changes user password
       tags:
       - Users
       security:
-      - cookie_auth: []
-      parameters: []
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: password changed
@@ -203,5 +431,3 @@ paths:
               - current_password
               - password
               - password_confirmation
-servers:
-- url: http://localhost:3000
