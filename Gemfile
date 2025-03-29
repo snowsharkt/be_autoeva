@@ -83,3 +83,4 @@ group :development, :test do
 end
 
 gem 'devise_token_auth'
+gem 'discard', '~> 1.4'
