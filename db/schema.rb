@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_25_132159) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_29_154056) do
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -38,14 +38,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_25_132159) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "jwt_denylists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "jti"
-    t.datetime "exp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["jti"], name: "index_jwt_denylists_on_jti"
-  end
-
   create_table "models", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "brand_id", null: false
     t.string "name", null: false
@@ -53,6 +45,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_25_132159) do
     t.datetime "updated_at", null: false
     t.index ["brand_id", "name"], name: "index_models_on_brand_id_and_name", unique: true
     t.index ["brand_id"], name: "index_models_on_brand_id"
+  end
+
+  create_table "prediction_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "car_name"
+    t.integer "year_of_manufacture"
+    t.integer "mileage"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_prediction_histories_on_discarded_at"
+    t.index ["user_id"], name: "index_prediction_histories_on_user_id"
   end
 
   create_table "reports", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -141,6 +145,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_25_132159) do
   add_foreign_key "favorites", "sale_posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "models", "brands"
+  add_foreign_key "prediction_histories", "users"
   add_foreign_key "reports", "users", column: "reporter_id"
   add_foreign_key "sale_post_images", "sale_posts"
   add_foreign_key "sale_posts", "brands"

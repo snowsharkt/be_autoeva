@@ -203,6 +203,34 @@ paths:
           description: signed out successfully
         '404':
           description: user not found
+  "/api/predicts":
+    post:
+      summary: Predict price
+      tags:
+      - Pridiction
+      parameters: []
+      responses:
+        '200':
+          description: success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                car_name:
+                  type: string
+                  example: Toyota Land Cruiser VX 4.6 V8
+                year_of_manufacture:
+                  type: integer
+                  example: 2020
+                mileage:
+                  type: integer
+                  example: 10000
+              required:
+              - car_name
+              - year_of_manufacture
+              - mileage
   "/api/users/{id}":
     parameters:
     - name: id
