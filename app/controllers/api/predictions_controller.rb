@@ -2,7 +2,6 @@ class Api::PredictionsController < Api::ApiController
   skip_before_action :authenticate_user!, only: [:predict]
   def predict
     predict_service = PredictionService.new(*set_prediction_params.values)
-    binding
     response = predict_service.predict
 
     if response[:status] == 200
