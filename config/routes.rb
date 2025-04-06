@@ -19,14 +19,18 @@ Rails.application.routes.draw do
   namespace :api do
     mount_devise_token_auth_for 'User', at: 'auth'
 
-    resources :users, only: [:index, :show, :update, :destroy]
     scope :users do
       get "prediction-history", to: "users#prediction_history"
+      get 'profile', to: 'users#profile'
+      post 'change_password', to: 'users#change_password'
     end
-    get 'profile', to: 'users#profile'
-    post 'change_password', to: 'users#change_password'
 
     post "predicts", to: "predictions#predict"
+
+    resources :users, only: [:index, :show, :update, :destroy]
+    resources :sale_posts do
+      resources :sale_post_images, only: [:create, :destroy]
+    end
   end
 
   root to: 'home#index'
