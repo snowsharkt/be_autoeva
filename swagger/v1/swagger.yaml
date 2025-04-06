@@ -231,6 +231,494 @@ paths:
               - car_name
               - year_of_manufacture
               - mileage
+  "/api/sale_posts":
+    get:
+      summary: Lists all sale posts
+      tags:
+      - Sale Posts
+      responses:
+        '200':
+          description: sale posts found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    price:
+                      type: number
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - sold
+                    year:
+                      type: integer
+                    odo:
+                      type: integer
+                    created_at:
+                      type: string
+                      format: datetime
+                    updated_at:
+                      type: string
+                      format: datetime
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                    brand:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    model:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    version:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    sale_post_images:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          image_url:
+                            type: string
+                  required:
+                  - id
+                  - title
+                  - status
+                  - user
+                  - brand
+                  - model
+                  - version
+    post:
+      summary: Creates a sale post
+      tags:
+      - Sale Posts
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: sale post created
+        '401':
+          description: unauthorized
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sale_post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: 2020 Toyota Land Cruiser VX
+                    description:
+                      type: string
+                      example: Excellent condition, one owner
+                    price:
+                      type: number
+                      example: 50000
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - sold
+                      example: active
+                    year:
+                      type: integer
+                      example: 2020
+                    odo:
+                      type: integer
+                      example: 15000
+                    brand_id:
+                      type: integer
+                      example: 1
+                    model_id:
+                      type: integer
+                      example: 1
+                    version_id:
+                      type: integer
+                      example: 1
+                  required:
+                  - title
+                  - status
+                  - brand_id
+                  - model_id
+                  - version_id
+                images:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - http://example.com/image1.jpg
+                  - http://example.com/image2.jpg
+              required:
+              - sale_post
+  "/api/sale_posts/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a sale post
+      tags:
+      - Sale Posts
+      responses:
+        '200':
+          description: sale post found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  price:
+                    type: number
+                  status:
+                    type: string
+                  year:
+                    type: integer
+                  odo:
+                    type: integer
+                  user_id:
+                    type: integer
+                  brand_id:
+                    type: integer
+                  model_id:
+                    type: integer
+                  version_id:
+                    type: integer
+                  created_at:
+                    type: string
+                    format: datetime
+                  updated_at:
+                    type: string
+                    format: datetime
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                  brand:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  model:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  version:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  sale_post_images:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        image_url:
+                          type: string
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        content:
+                          type: string
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            email:
+                              type: string
+        '404':
+          description: sale post not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Sale post not found
+    put:
+      summary: Updates a sale post
+      tags:
+      - Sale Posts
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: sale post updated
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sale_post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: Updated Toyota Land Cruiser VX
+                    description:
+                      type: string
+                      example: Updated description
+                    price:
+                      type: number
+                      example: 48000
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - sold
+                      example: sold
+                    year:
+                      type: integer
+                      example: 2020
+                    odo:
+                      type: integer
+                      example: 20000
+                    brand_id:
+                      type: integer
+                      example: 1
+                    model_id:
+                      type: integer
+                      example: 1
+                    version_id:
+                      type: integer
+                      example: 1
+                images:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - http://example.com/newimage1.jpg
+              required:
+              - sale_post
+    delete:
+      summary: Deletes a sale post
+      tags:
+      - Sale Posts
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: sale post deleted
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: sale post not found
+        '422':
+          description: unprocessable entity
+  "/api/sale_posts/{sale_post_id}/sale_post_images":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Adds images to a sale post
+      tags:
+      - Sale Post Images
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: image created
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sale_post_image:
+                  type: object
+                  properties:
+                    image_url:
+                      type: string
+                      example: http://example.com/image.jpg
+                  required:
+                  - image_url
+              required:
+              - sale_post_image
+  "/api/sale_posts/{sale_post_id}/sale_post_images/{id}":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    - name: id
+      in: path
+      description: Sale Post Image ID
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Deletes a sale post image
+      tags:
+      - Sale Post Images
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: image deleted
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post or image not found
   "/api/users/{id}":
     parameters:
     - name: id
