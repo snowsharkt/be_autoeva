@@ -17,3 +17,13 @@
     ### Build and run
     - `docker compose -f docker-compose.prod.yml build`
     - `docker compose -f docker-compose.prod.yml up -d`
+
+## Data Import
+The application comes with pre-defined car brands, models, and versions data that can be loaded using rake tasks:
+
+- Import brands only: `rails import:brands`
+- Import models only: `rails import:models`
+- Import versions only: `rails import:versions`
+- Import all data (in correct order): `rails import:all`
+
+These tasks can be run after database setup to populate initial vehicle data.

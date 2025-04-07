@@ -1079,7 +1079,7 @@ id,model_id,name,origin,transmission,fuel_type,engine_capacity,seats,car_name_en
 1078,272,2.5G,Assembly,Manual,Diesel, 2.5 L,7,1131
 1079,272,2.7L 4x2 AT,Imported,Automatic,Petrol, 2.7 L,7,1132
 1080,272,2.7V 4X2 AT,Assembly,Automatic,Petrol, 2.7 L,7,1133
-1081,272,2.7V 4x2 AT,Imported,Automatic,Petrol, 2.7 L,7,1134
+1081,272,2.7V 4x2 AT CBU,Imported,Automatic,Petrol, 2.7 L,7,1134
 1082,272,2.7V 4x2 AT TRD,Assembly,Automatic,Petrol, 2.7 L,7,1135
 1083,272,2.7V 4x4 AT,Imported,Automatic,Petrol, 2.7 L,7,1136
 1084,272,2.8V 4x4 AT,Imported,Automatic,Diesel, 2.8 L,7,1137
