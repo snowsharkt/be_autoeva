@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_29_154056) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_07_073541) do
   create_table "brands", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -128,14 +128,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_29_154056) do
   create_table "versions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "model_id", null: false
     t.string "name", null: false
-    t.integer "year_start"
-    t.integer "year_end"
     t.string "origin"
     t.string "transmission"
     t.string "fuel_type"
     t.integer "seats"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "engine_capacity"
+    t.integer "car_name_encoded"
     t.index ["model_id", "name"], name: "index_versions_on_model_id_and_name", unique: true
     t.index ["model_id"], name: "index_versions_on_model_id"
   end
