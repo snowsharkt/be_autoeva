@@ -7,3 +7,7 @@ User.create!(
   role: 'admin',
   phone_number: '1234567890'
 )
+
+# Import car data
+puts "Importing car brands, models, and versions data..."
+Rake::Task['import:all'].invoke
