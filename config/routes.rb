@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     resources :sale_posts do
       resources :sale_post_images, only: [:create, :destroy]
     end
+
+    resources :brands, only: [:index]
   end
 
   root to: 'home#index'

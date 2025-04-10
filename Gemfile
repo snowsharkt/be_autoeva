@@ -84,3 +84,4 @@ end
 
 gem 'devise_token_auth'
 gem 'discard', '~> 1.4'
+gem 'active_model_serializers'
