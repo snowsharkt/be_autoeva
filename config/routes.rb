@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
 
     resources :brands, only: [:index]
+    resources :models, only: [:index]
   end
 
   root to: 'home#index'
