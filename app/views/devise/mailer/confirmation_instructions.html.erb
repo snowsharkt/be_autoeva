@@ -1,0 +1,9 @@
+<p>Xin chào <%= @resource.email %>!</p>
+
+<p>Cảm ơn bạn đã đăng ký tài khoản tại Autoeva. Vui lòng xác nhận địa chỉ email của bạn bằng cách nhấp vào liên kết bên dưới:</p>
+
+<p><%= link_to 'Xác nhận tài khoản', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Nếu bạn không thực hiện yêu cầu này, vui lòng bỏ qua email này.</p>
+
+<p>Trân trọng,<br>Đội ngũ Autoeva</p>

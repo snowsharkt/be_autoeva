@@ -203,6 +203,76 @@ paths:
           description: signed out successfully
         '404':
           description: user not found
+  "/api/auth/confirmation":
+    post:
+      summary: Resend confirmation instructions
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: confirmation instructions sent
+        '404':
+          description: user not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+              required:
+              - email
+    get:
+      summary: Confirm email address
+      tags:
+      - Authentication
+      parameters:
+      - name: confirmation_token
+        in: query
+        required: true
+        description: Token received in confirmation email
+        schema:
+          type: string
+      - name: redirect_url
+        in: query
+        required: false
+        description: URL to redirect after confirmation (optional)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: email confirmed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Your email address has been successfully confirmed.
+        '422':
+          description: invalid or expired token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Confirmation token is invalid or has expired. Please request
+                      a new one.
   "/api/predicts":
     post:
       summary: Predict price
