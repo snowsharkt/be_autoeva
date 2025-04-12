@@ -17,7 +17,9 @@ Rails.application.routes.draw do
 
   # API routes for authentication
   namespace :api do
-    mount_devise_token_auth_for 'User', at: 'auth'
+    mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+      confirmations: 'api/auth/confirmations',
+    }
 
     scope :users do
       get "prediction-history", to: "users#prediction_history"

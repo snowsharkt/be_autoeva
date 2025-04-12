@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}".strip
   end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
