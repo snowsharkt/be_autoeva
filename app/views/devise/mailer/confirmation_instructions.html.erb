@@ -2,7 +2,7 @@
 
 <p>Cảm ơn bạn đã đăng ký tài khoản tại Autoeva. Vui lòng xác nhận địa chỉ email của bạn bằng cách nhấp vào liên kết bên dưới:</p>
 
-<% url = "#{ENV['FE_URL'] || 'http://localhost:3000'}/verify?confirmation_token=#{@token}" %>
+<% url = "#{ENV['FE_URL'] || 'http://localhost:3000'}/verify?confirmation_token=#{@token}&email=#{@resource.email}" %>
 <p><%= link_to 'Xác nhận tài khoản', url %></p>
 
 <p>Nếu bạn không thực hiện yêu cầu này, vui lòng bỏ qua email này.</p>
