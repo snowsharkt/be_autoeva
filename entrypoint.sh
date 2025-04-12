@@ -10,8 +10,13 @@ done
 
 bundle check || bundle install
 
-if [ "$RAILS_ENV" = "development" ]; then
-  bundle exec rails db:prepare
+bundle exec rails db:prepare
+
+if [ "$RAILS_ENV" = "production" ]; then
+  echo "Clearing cache..."
+  rm -rf public/assets tmp/cache
+  echo "Precompiling assets..."
+  bundle exec rails assets:precompile
 fi
 
 exec "$@"
