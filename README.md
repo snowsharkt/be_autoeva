@@ -24,6 +24,7 @@ The application comes with pre-defined car brands, models, and versions data tha
 - Import brands only: `rails import:brands`
 - Import models only: `rails import:models`
 - Import versions only: `rails import:versions`
+- - Import versions only: `rails import:car_info`
 - Import all data (in correct order): `rails import:all`
 
 These tasks can be run after database setup to populate initial vehicle data.
