@@ -1,0 +1,1255 @@
+car_name,car_name_encoded
+Acura MDX 3.5L,1
+Acura MDX 3.7L,2
+Acura MDX SH-AWD,3
+Acura ZDX SH-AWD,4
+Audi A1 1.4 TFSI,5
+Audi A3 1.4 AT,6
+Audi A3 1.8 AT,7
+Audi A4 1.8 TFSI,8
+Audi A4 1.8T,9
+Audi A4 2.0 TFSI,10
+Audi A4 40 TFSI Advanced,11
+Audi A5 2.0 T Quattro,12
+Audi A5 2.0T S-line Quattro,13
+Audi A5 Sportback 2.0,14
+Audi A6 1.8 TFSI,15
+Audi A6 2.0 TFSI,16
+Audi A6 2.0T,17
+Audi A6 2.4 AT,18
+Audi A6 3.0T Quattro,19
+Audi A6 45 TFSI,20
+Audi A7 3.0 TFSI,21
+Audi A8 L 3.0 Quattro,22
+Audi A8 L 4.2 Quattro,23
+Audi A8 L V6 3.0 TFSI,24
+Audi Q2 1.4 TFSI,25
+Audi Q3 2.0 Quattro,26
+Audi Q3 35 TFSI,27
+Audi Q3 Exclusive 2.0 TFSI Quattro,28
+Audi Q5 2.0 AT,29
+Audi Q5 3.2 AT,30
+Audi Q5 45 TFSI Quattro,31
+Audi Q5 Sportback Sline 45 TFSI Quattro,32
+Audi Q7 2.0 AT,33
+Audi Q7 3.0 AT,34
+Audi Q7 3.6 AT,35
+Audi Q7 4.2 AT,36
+Audi Q7 45 TFSI Quattro,37
+Audi Q7 S-line 2.0 AT,38
+Audi S5 Sportback 3.0 TFSI Quattro AT,39
+Audi TT 2.0 TFSI,40
+Audi TT Roadster 2.0 AT,42
+Audi TT RS 3.2 Quattro,41
+Baic Beijing U5 Plus Luxury,95
+Baic Beijing X7 Premium 1.5 AT,96
+Baic Q7 1.5 AT,97
+Bentley Continental GT,98
+Bentley Continental GT Speed,99
+Bentley Flying Spur 6.0 V8,100
+Bentley Flying Spur Speed,101
+Bentley Flying Spur W12,102
+BMW 1 Series 116i,43
+BMW 2 Series 218i Active Tourer,44
+BMW 2 Series 218i Gran Tourer,45
+BMW 3 Series 320i,46
+BMW 3 Series 320i GT,47
+BMW 3 Series 320i M Sport,48
+BMW 3 Series 320i Sport Line,49
+BMW 3 Series 320i Sport Line Plus,50
+BMW 3 Series 325i,51
+BMW 3 Series 328i,52
+BMW 3 Series 328i GT,53
+BMW 3 Series 330i M Sport,54
+BMW 4 Series 420i Convertible,55
+BMW 4 Series 420i Coupe,56
+BMW 4 Series 420i Gran Coupe,57
+BMW 5 Series 520i,58
+BMW 5 Series 520i Luxury,59
+BMW 5 Series 520i Luxury Line,60
+BMW 5 Series 520i M Sport,61
+BMW 5 Series 523i,62
+BMW 5 Series 528i,63
+BMW 5 Series 528i GT,64
+BMW 5 Series 530i,65
+BMW 5 Series 530i Luxury Line,66
+BMW 5 Series 530i M Sport,67
+BMW 5 Series 535i GT,68
+BMW 6 Series 640i Gran Coupe,69
+BMW 7 Series 730d,71
+BMW 7 Series 730Li,70
+BMW 7 Series 750Li,72
+BMW X1 sDrive18i,73
+BMW X1 sDrive20i,74
+BMW X1 xDrive28i,75
+BMW X2 sDrive18i,76
+BMW X3 sDrive20i,77
+BMW X3 sDrive20i M Sport,78
+BMW X3 xDrive20i,79
+BMW X3 xDrive20i M Sport,80
+BMW X3 xDrive28i,81
+BMW X3 xDrive30i M Sport,82
+BMW X3 xDrive30i xLine,83
+BMW X4 xDrive20i,84
+BMW X4 xDrive28i,85
+BMW X5 3.0si,86
+BMW X5 4.8i,87
+BMW X5 xDrive30i,88
+BMW X5 xDrive35i,89
+BMW X6 ActiveHybrid,90
+BMW X6 xDrive35i,91
+BMW X6 xDrive50i,92
+BYD Atto 3 Premium,93
+BYD Seal Advanced,94
+Cadillac Deville Coupe 4.5 AT,103
+Cadillac Escalade 6.2 V8,104
+Cadillac Escalade EXT 6.0 AT AWD,105
+Cadillac SRX 3.0 V6,106
+Chevrolet Aveo LT 1.4 MT,107
+Chevrolet Aveo LTZ 1.4 AT,108
+Chevrolet Aveo LTZ 1.5 AT,109
+Chevrolet Camaro 2.0 Turbo,110
+Chevrolet Camaro RS 3.6 V6,111
+Chevrolet Captiva LT Maxx 2.0 MT,112
+Chevrolet Captiva LTZ 2.4 AT,113
+Chevrolet Captiva LTZ Maxx 2.4 AT,114
+Chevrolet Captiva Revv LTZ 2.4 AT,115
+Chevrolet Colorado High Country 2.5L 4x4 AT,116
+Chevrolet Colorado High Country 2.8L 4x4 AT,117
+Chevrolet Colorado LT 2.5L 4x2 AT,118
+Chevrolet Colorado LT 2.5L 4x2 MT,119
+Chevrolet Colorado LTZ 2.5L 4x4 AT,120
+Chevrolet Colorado LTZ 2.8L 4x4 AT,121
+Chevrolet Cruze LS 1.6 MT,122
+Chevrolet Cruze LT 1.6 MT,123
+Chevrolet Cruze LT 1.6L,124
+Chevrolet Cruze LTZ 1.8 AT,125
+Chevrolet Cruze LTZ 1.8L,126
+Chevrolet Express Explorer Limited SE 6.0 V8 AWD,127
+Chevrolet Orlando LT 1.8,128
+Chevrolet Orlando LT 1.8 MT,129
+Chevrolet Orlando LTZ 1.8 AT,130
+Chevrolet Trailblazer LT 2.5L 4x2 MT,131
+Chevrolet Trailblazer LT 2.5L VGT 4x2 AT,132
+Chevrolet Trailblazer LTZ 2.5L VGT 4x4 AT,133
+Chevrolet Trailblazer LTZ 2.8L 4x4 AT,134
+Chevrolet Trax 1.4 LT,135
+Chrysler 200 2.4 AT,136
+Chrysler 300C 2.7 V6,137
+Chrysler 300C 3.5 V6,138
+Chrysler 300C 3.5 V6 AWD,139
+Chrysler 300C 5.7 V8,140
+Chrysler PT Cruiser 2.4 AT,141
+Citroen DS3 1.6 AT,142
+Daewoo Lacetti CDX 1.8 AT,144
+Daihatsu Terios 1.5 4x4 AT,145
+Fiat 500 0.9 AT,150
+Fiat 500 1.2 AT,151
+Fiat 500 1.3 AT,152
+Ford EcoSport Ambiente 1.5L AT,153
+Ford EcoSport Titanium 1.0 AT,154
+Ford EcoSport Titanium 1.0 EcoBoost,155
+Ford EcoSport Titanium 1.5 AT,156
+Ford EcoSport Titanium 1.5L AT,157
+Ford EcoSport Titanium Black 1.5L AT,158
+Ford EcoSport Trend 1.5 AT,159
+Ford EcoSport Trend 1.5L AT,160
+Ford EcoSport Trend 1.5L MT,161
+Ford Escape Limited 3.0 AT,162
+Ford Escape XLS 2.3L 4x2 AT,163
+Ford Escape XLT 2.3L 4x4 AT,164
+Ford Everest 2.5L 4x2 AT,165
+Ford Everest 2.5L 4x2 MT,166
+Ford Everest 2.5L 4x4 MT,167
+Ford Everest 2.6L 4x4 MT,168
+Ford Everest Ambiente 2.0 4x2 AT,169
+Ford Everest Ambiente 2.0 4x2 MT,170
+Ford Everest Ambiente 2.0L 4x2 AT,171
+Ford Everest Sport 2.0L 4x2 AT,172
+Ford Everest Titanium 2.0L 4x2 AT,173
+Ford Everest Titanium 2.0L 4x4 AT,174
+Ford Everest Titanium 2.2L 4x2 AT,175
+Ford Everest Titanium Plus 2.0L 4x4 AT,176
+Ford Everest Trend 2.0L 4x2 AT,177
+Ford Everest Trend 2.2L 4x2 AT,178
+Ford Everest Wildtrak 2.0L 4x4 AT,179
+Ford Explorer Limited 2.3L EcoBoost,180
+Ford Fiesta 1.6 AT,181
+Ford Fiesta S 1.0 AT Ecoboost,182
+Ford Fiesta S 1.0AT Ecoboost,183
+Ford Fiesta S 1.5 AT,184
+Ford Fiesta S 1.6 AT,185
+Ford Fiesta Titanium 1.5 AT,186
+Ford Fiesta Trend 1.5 AT,187
+Ford Flex Limited EcoBoost,188
+Ford Focus 1.8 AT,189
+Ford Focus 2.0 AT,190
+Ford Focus 2.0 AT Ghia,191
+Ford Focus Diesel 2.0 AT,192
+Ford Focus S 2.0 AT,193
+Ford Focus Sport 1.5L,194
+Ford Focus Titanium 1.5L,195
+Ford Focus Titanium 2.0 AT,196
+Ford Focus Trend 1.5L,197
+Ford Focus Trend 1.6 AT,198
+Ford Mondeo 2.3 AT,199
+Ford Mustang EcoBoost,200
+Ford Mustang EcoBoost Fastback,201
+Ford Ranger Limited 2.0L 4x4 AT,202
+Ford Ranger Raptor 2.0L 4x4 AT,203
+Ford Ranger Sport 2.0L 4x4 AT,204
+Ford Ranger Wildtrak 2.0L 4x2 AT,205
+Ford Ranger Wildtrak 2.0L 4x4 AT,206
+Ford Ranger Wildtrak 2.2L 4x2 AT,207
+Ford Ranger Wildtrak 2.2L 4x4 AT,208
+Ford Ranger Wildtrak 3.2L 4x4 AT,209
+Ford Ranger XL 2.2L 4x4 MT,210
+Ford Ranger XLS 2.0L 4x2 AT,211
+Ford Ranger XLS 2.0L 4x2 MT,212
+Ford Ranger XLS 2.0L 4x4 AT,213
+Ford Ranger XLS 2.2L 4x2 AT,214
+Ford Ranger XLS 2.2L 4x2 MT,215
+Ford Ranger XLT 2.0L 4x4 AT,216
+Ford Ranger XLT 2.2L 4x4 AT,217
+Ford Ranger XLT 2.2L 4x4 MT,218
+Ford Ranger XLT 2.5L 4x4 MT,219
+Ford Territory Titanium 1.5 AT,220
+Ford Territory Titanium X 1.5 AT,221
+Ford Territory Trend 1.5 AT,222
+Ford Tourneo Limousine 2.0 AT,223
+Ford Tourneo Titanium 2.0 AT,224
+Ford Transit 2.4L,225
+Ford Transit Limousine,226
+Ford Transit Luxury,227
+Ford Transit Premium,228
+Ford Transit Premium+,229
+Ford Transit Standard MID,231
+Ford Transit SVP,230
+Ford Transit Tiêu chuẩn,232
+Ford Transit Van,233
+Gaz Gazelle Next Minibus 2.8 MT,235
+Gaz Sobol NN Van 2.8 MT,236
+Haima S5 1.6 MT,237
+Haima S7 2.0 AT,238
+Haval H6 HEV,239
+Honda Accord 1.5 AT,242
+Honda Accord 2.0 AT,243
+Honda Accord 2.4 AT,244
+Honda Accord 2.4 AT Coupe,245
+Honda Accord 3.5 AT,246
+Honda BR V G,247
+Honda BR V L,248
+Honda Brio G,249
+Honda Brio RS,250
+Honda City 1.5,259
+Honda City 1.5 AT,260
+Honda City 1.5 MT,261
+Honda City 1.5TOP,262
+Honda City G 1.5 AT,263
+Honda City L 1.5 AT,264
+Honda City RS 1.5 AT,265
+Honda Civic 1.5L Vtec Turbo,266
+Honda Civic 1.8 AT,267
+Honda Civic 1.8 E,268
+Honda Civic 1.8 MT,269
+Honda Civic 2.0 AT,270
+Honda Civic E 1.5 AT,271
+Honda Civic E 1.8 AT,272
+Honda Civic G 1.5 AT,273
+Honda Civic G 1.8 AT,274
+Honda Civic RS 1.5 AT,275
+Honda CRV 2.0 AT,251
+Honda CRV 2.4 AT,252
+Honda CRV 2.4 AT - TG,253
+Honda CRV E,254
+Honda CRV e:HEV RS,258
+Honda CRV G,255
+Honda CRV L,256
+Honda CRV LSE,257
+Honda HRV G,276
+Honda HRV L,277
+Honda HRV RS,278
+Honda Jazz RS,279
+Honda Jazz V,280
+Honda Jazz VX,281
+Honda Odyssey 2.4 AT,282
+Honda Odyssey EX-L 3.5 AT,283
+Honda Odyssey Touring 3.5 AT,284
+Honda Pilot 3.5 V6,285
+Hyundai Accent 1.4 AT,287
+Hyundai Accent 1.4 AT Đặc Biệt,288
+Hyundai Accent 1.4 ATH,289
+Hyundai Accent 1.4 MT,290
+Hyundai Accent 1.4 MT Base,291
+Hyundai Accent 1.4 MT Tiêu Chuẩn,292
+Hyundai Accent 1.5 AT,293
+Hyundai Accent 1.5 MT,294
+Hyundai Accent Cao cấp 1.5 AT,295
+Hyundai Accent Đặc biệt 1.5 AT,296
+Hyundai Avante 1.6 AT,297
+Hyundai Avante 1.6 MT,298
+Hyundai Azera 3.3 AT,299
+Hyundai Centennial 3.5 AT,300
+Hyundai County 3.9L Thân dài,301
+Hyundai County 3.9L Tiêu chuẩn,302
+Hyundai Creta 1.6 AT,303
+Hyundai Creta 1.6 AT CRDi,304
+Hyundai Creta Cao cấp 1.5 AT,305
+Hyundai Creta Đặc biệt 1.5 AT,307
+Hyundai Creta Tiêu chuẩn 1.5 AT,306
+Hyundai Custin Cao Cấp 2.0T,308
+Hyundai Custin Đặc Biệt 1.5T,310
+Hyundai Custin Tiêu Chuẩn 1.5T,309
+Hyundai Elantra 1.6 AT,311
+Hyundai Elantra 1.6 AT Đặc biệt,313
+Hyundai Elantra 1.6 AT Tiêu chuẩn,312
+Hyundai Elantra 1.6 MT,314
+Hyundai Elantra 1.8 AT,315
+Hyundai Elantra 2.0 AT,316
+Hyundai Elantra 2.0 AT Cao cấp,317
+Hyundai Elantra N-Line 1.6 Turbo AT,318
+Hyundai Elantra Sport 1.6 AT,319
+Hyundai Equus Limousine VL 500,320
+Hyundai Equus VS 450,321
+Hyundai Equus VS 460,322
+Hyundai Equus Vs 500,323
+Hyundai Genesis 2.0 AT,324
+Hyundai Genesis 3.8 V6,325
+Hyundai Genesis BH330,326
+Hyundai Genesis BH380,327
+Hyundai Grand Starex 2.4 AT,328
+Hyundai Grand Starex 2.4 MT,329
+Hyundai Grand Starex 2.5 MT,330
+Hyundai Grand Starex Limousine 2.4 AT,331
+Hyundai Grand Starex Van 2.4 MT,332
+Hyundai Grand Starex Van 2.5 AT,333
+Hyundai Grand Starex Van 2.5 MT,334
+Hyundai i10 1.2 AT,412
+Hyundai i10 1.2 AT Tiêu Chuẩn,413
+Hyundai i10 1.2 MT,414
+Hyundai i10 1.2 MT Tiêu Chuẩn,415
+Hyundai i10 Grand 1.0 AT,416
+Hyundai i10 Grand 1.0 MT,417
+Hyundai i10 Grand 1.2 AT,418
+Hyundai i10 Grand 1.2 MT,419
+Hyundai i10 Grand 1.2 MT Base,420
+Hyundai i20 1.4 AT,421
+Hyundai i20 Active 1.4 AT,422
+Hyundai i30 1.6 AT,423
+Hyundai i30 CW 1.6 AT,424
+Hyundai Kona 1.6 Turbo,339
+Hyundai Kona 2.0 AT,340
+Hyundai Kona 2.0 ATH,341
+Hyundai Kona Đặc biệt 2.0 AT,342
+Hyundai Palisade Exclusive 2.2 AT,346
+Hyundai Palisade Prestige 2.2 AT HTRAC,347
+Hyundai SantaFe 2.0L,351
+Hyundai SantaFe 2.2 MT,352
+Hyundai SantaFe 2.2L,353
+Hyundai SantaFe 2.2L 4WD,354
+Hyundai SantaFe 2.2L HTRAC,355
+Hyundai SantaFe 2.4L,356
+Hyundai SantaFe 2.4L 4WD,357
+Hyundai SantaFe 2.4L HTRAC,358
+Hyundai SantaFe 2.7 AT,359
+Hyundai SantaFe 2.7 MT,360
+Hyundai SantaFe 2.7L 4WD,361
+Hyundai SantaFe Calligraphy 2.5L HTRAC 6S,362
+Hyundai SantaFe Calligraphy 2.5L Turbo HTRAC,363
+Hyundai SantaFe Cao cấp 2.2L HTRAC,364
+Hyundai SantaFe Cao cấp 2.4L HTRAC,365
+Hyundai SantaFe Cao cấp 2.5L HTRAC,366
+Hyundai SantaFe Đặc biệt 2.4L HTRAC,376
+Hyundai SantaFe Hybrid 1.6 HTRAC,367
+Hyundai SantaFe MLX 2.0L,368
+Hyundai SantaFe MLX 2.2L,369
+Hyundai SantaFe Premium 2.2L HTRAC,370
+Hyundai SantaFe Premium 2.4L HTRAC,371
+Hyundai SantaFe Prestige 2.5L HTRAC,372
+Hyundai SantaFe SLX,373
+Hyundai SantaFe Tiêu chuẩn 2.2L,374
+Hyundai SantaFe Tiêu chuẩn 2.5L,375
+Hyundai Solati 2.5 MT,377
+Hyundai Solati Cứu Thương,378
+Hyundai Solati H350 2.5 MT,379
+Hyundai Solati Limousine,380
+Hyundai Solati Limousine 2.5 MT,381
+Hyundai Sonata 2.0 AT,382
+Hyundai Sonata 2.0 MT,383
+Hyundai Sonata Y20,384
+Hyundai Sonata Y20 2.0 AT,385
+Hyundai Stargazer Cao cấp 1.5 AT,386
+Hyundai Stargazer Đặc biệt 1.5 AT,390
+Hyundai Stargazer Tiêu chuẩn 1.5 AT,387
+Hyundai Stargazer X 1.5 AT,388
+Hyundai Stargazer X Cao cấp 1.5 AT,389
+Hyundai Tucson 1.6 AT Turbo,392
+Hyundai Tucson 1.6 AT Turbo Đặc biệt,394
+Hyundai Tucson 1.6 AT Turbo HTRAC Đặc biệt,393
+Hyundai Tucson 2.0 AT,395
+Hyundai Tucson 2.0 AT 4WD,396
+Hyundai Tucson 2.0 AT CRDi,397
+Hyundai Tucson 2.0 AT CRDi 4WD,398
+Hyundai Tucson 2.0 AT CRDi Đặc biệt,399
+Hyundai Tucson 2.0 AT Đặc biệt,401
+Hyundai Tucson 2.0 AT Tiêu chuẩn,400
+Hyundai Tucson 2.0 ATH,402
+Hyundai Tucson LMX 2.0 eVGT,403
+Hyundai Tucson LX 2.0 VVT,404
+Hyundai Veloster 1.6 AT,406
+Hyundai Veloster 1.6 AT GDI,407
+Hyundai Venue 1.0 T-GDi,408
+Hyundai Venue 1.0 T-GDi Đặc Biệt,409
+Hyundai Veracruz 3.0 V6,410
+Infiniti FX 35,425
+Infiniti G35 3.5 AT,426
+Infiniti G37 3.7 AT,427
+Infiniti QX 60 3.5 AWD,428
+Isuzu Dmax Hi-Lander Z 1.9L 4x2 AT,429
+Isuzu Dmax LS 1.9L 4x2 AT,430
+Isuzu Dmax LS 1.9L 4x2 MT,431
+Isuzu Dmax LS 2.5 4x2 MT,432
+Isuzu Dmax LS 2.5 4x4 MT,433
+Isuzu Dmax LS 3.0 4x2 MT,434
+Isuzu Dmax LS 3.0 4x4 AT,435
+Isuzu Dmax LS 3.0 4x4 MT,436
+Isuzu Dmax LS Prestige 1.9L 4x2 AT,437
+Isuzu Dmax Type Z 1.9L 4x4 AT,438
+Isuzu MU-X 1.9 4X2 AT,440
+Isuzu MU-X 1.9 4X2 MT,441
+Isuzu MU-X 2.5 4X2 MT,442
+Isuzu MU-X 3.0 4X2 AT,443
+Isuzu MU-X 3.0L 4x4 AT,444
+Isuzu MU-X Limited 3.0L 4x2 AT,445
+Isuzu MU-X Prestige 1.9 4X2 AT,446
+Jaguar F-Pace Prestige,454
+Jaguar F-Pace R-Sport,455
+Jaguar XE 2.0 T,456
+Jaguar XE 25T Portfolio,457
+Jaguar XF 2.0 AT,458
+Jaguar XF Prestige,459
+Jaguar XJ series XJ 2.0 Premium Luxury,460
+Jaguar XJ series XJL 2.0 Portfolio,461
+Jaguar XJ series XJL 3.0 Portfolio,462
+Jaguar XJ series XJL 3.0 Supercharged,463
+Jaguar XJ series XJL 5.0 Supercharged,464
+Kia Carens 1.4T Premium,469
+Kia Carens 1.4T Signature,470
+Kia Carens 1.5G IVT,471
+Kia Carens 1.5G Luxury,472
+Kia Carens 1.5G MT Deluxe,473
+Kia Carens 2.0 AT,474
+Kia Carens 2.0 MT,475
+Kia Carens CRDi 2.0 AT,476
+Kia Carens CRDi 2.0 MT,477
+Kia Carens EX 2.0 MT,478
+Kia Carens EXMT,479
+Kia Carens S SX 2.0 AT,480
+Kia Carens S SX 2.0 MT,481
+Kia Carens SX 2.0 AT,482
+Kia Carens SXAT,483
+Kia Carnival 2.7 MT,484
+Kia Carnival Luxury 2.2D,485
+Kia Carnival Premium 2.2D,486
+Kia Carnival Premium 2.2D 7S,487
+Kia Carnival Premium 2.2D 8S,488
+Kia Carnival Royal 2.2D,489
+Kia Carnival Signature 2.2D,490
+Kia Carnival Signature 3.5G,491
+Kia Cerato 1.6 AT,492
+Kia Cerato 1.6 AT Deluxe,493
+Kia Cerato 1.6 AT Luxury,494
+Kia Cerato 1.6 MT,495
+Kia Cerato 2.0 AT,496
+Kia Cerato 2.0 AT Premium,497
+Kia Cerato Koup 1.6 AT,498
+Kia Cerato Koup 2.0 AT,499
+Kia Forte EX 1.6 MT,500
+Kia Forte S 1.6 AT,501
+Kia Forte SLi 1.6 AT,502
+Kia Forte SLi 2.0 AT,503
+Kia Forte SX 1.6 AT,504
+Kia Forte SX 1.6 MT,505
+Kia K3 1.6 AT,510
+Kia K3 1.6 MT,511
+Kia K3 2.0 AT,512
+Kia K3 Deluxe 1.6 MT,513
+Kia K3 GT 1.6 AT Turbo,514
+Kia K3 Luxury 1.6 AT,515
+Kia K3 Premium 1.6 AT,516
+Kia K3 Premium 2.0 AT,517
+Kia K5 GT-Line 2.5 AT,518
+Kia K5 Luxury 2.0 AT,519
+Kia K5 Premium 2.0 AT,520
+Kia Morning 1.0 AT,521
+Kia Morning 1.0 AT Sport,522
+Kia Morning 1.25 AT,523
+Kia Morning 1.25 MT,524
+Kia Morning AT,525
+Kia Morning Deluxe,526
+Kia Morning EX,527
+Kia Morning GT-Line,528
+Kia Morning Luxury,529
+Kia Morning MT,530
+Kia Morning S AT,531
+Kia Morning Si AT,532
+Kia Morning Si MT,533
+Kia Morning Van 1.0 AT,534
+Kia Morning X-Line,535
+Kia Opirus 3.5 AT,536
+Kia Optima 2.0 AT,537
+Kia Optima 2.0 AT Luxury,538
+Kia Optima 2.0 ATH,539
+Kia Optima 2.0 GAT Luxury,540
+Kia Optima 2.4 GAT Premium,541
+Kia Optima 2.4 GT line,542
+Kia Picanto 1.25 AT,543
+Kia Picanto S 1.25 AT,544
+Kia Picanto S 1.25 MT,545
+Kia Ray 1.0 AT,546
+Kia Rio 1.4 AT,547
+Kia Rio 1.4 MT,548
+Kia Rondo DAT,549
+Kia Rondo GAT,550
+Kia Rondo GAT Deluxe,551
+Kia Rondo GATH,552
+Kia Rondo GMT,553
+Kia Sedona 2.2 DAT Deluxe,554
+Kia Sedona 2.2 DAT Luxury,555
+Kia Sedona 2.2 DAT Signature,556
+Kia Sedona 2.2L DAT,557
+Kia Sedona 2.2L DATH,558
+Kia Sedona 3.3 GAT Premium,559
+Kia Sedona 3.3 GAT Signature,560
+Kia Sedona 3.3L GAT,561
+Kia Sedona 3.3L GATH,562
+Kia Sedona Platinum D,563
+Kia Sedona Platinum G,564
+Kia Seltos 1.5 AT,565
+Kia Seltos Deluxe 1.4 AT,566
+Kia Seltos Deluxe 1.5 AT,567
+Kia Seltos GT-Line 1.4 AT,568
+Kia Seltos Luxury 1.4 AT,569
+Kia Seltos Luxury 1.5 AT,570
+Kia Seltos Luxury 1.6 AT,571
+Kia Seltos Premium 1.4 AT,572
+Kia Seltos Premium 1.5 AT,573
+Kia Seltos Premium 1.6 AT,574
+Kia Seltos X-Line 1.4 AT,575
+Kia Soluto 1.4 AT Deluxe,576
+Kia Soluto 1.4 AT Luxury,577
+Kia Soluto 1.4 MT,578
+Kia Soluto 1.4 MT Deluxe,579
+Kia Sonet Deluxe 1.5 AT,580
+Kia Sonet Deluxe 1.5 MT,581
+Kia Sonet Luxury 1.5 AT,582
+Kia Sonet Premium 1.5 AT,583
+Kia Sorento 2.2 DAT Premium,584
+Kia Sorento 2.4 GAT Deluxe,585
+Kia Sorento 2.4 GAT Premium,586
+Kia Sorento 2.5 AT CRDi,587
+Kia Sorento DATH,588
+Kia Sorento DATH 2.2L 2WD,589
+Kia Sorento Deluxe 2.2 AT,591
+Kia Sorento DMT,590
+Kia Sorento GAT,592
+Kia Sorento GAT 2.4L 2WD,593
+Kia Sorento GAT 2.4L 4WD,594
+Kia Sorento GATH,595
+Kia Sorento GATH 2.4L 2WD,596
+Kia Sorento Limited 2.0 AT,597
+Kia Sorento Luxury 2.2 AT,598
+Kia Sorento Premium 2.2 AT AWD,599
+Kia Sorento Signature 2.2 AT AWD,600
+Kia Sorento Signature 2.5 AT AWD,601
+Kia Soul 2.0 AT,602
+Kia Sportage 2.0 AT,603
+Kia Sportage GT Line,604
+Kia Sportage Limited 2.0 AT,605
+Kia Sportage Luxury 2.0G,606
+Kia Sportage Signature 1.6T AWD,607
+Kia Sportage Signature 2.0D,608
+Kia Sportage Signature X-Line 1.6T AWD,609
+Kia Sportage Signature X-Line 2.0D,610
+Kia Sportage Signature X-Line 2.0G,611
+Kia Sportage TXL 2.0 AT,612
+LandRover Discovery 4 HSE 5.0 V8,613
+LandRover Discovery HSE,614
+LandRover Discovery HSE 5.0 V8,615
+LandRover Discovery SE,616
+LandRover Discovery Sport HSE,617
+LandRover Discovery Sport HSE Luxury,618
+LandRover Freelander LR2 HSE,619
+LandRover Range Rover Autobiography 5.0,620
+LandRover Range Rover Evoque Dynamic,621
+LandRover Range Rover Evoque HSE,622
+LandRover Range Rover Evoque HSE Dynamic,623
+LandRover Range Rover Evoque Prestige,624
+LandRover Range Rover Evoque Pure,625
+LandRover Range Rover Evoque R-Dynamic,626
+LandRover Range Rover Evoque SE Plus,627
+LandRover Range Rover HSE 4.4,628
+LandRover Range Rover Sport Autobiography,629
+LandRover Range Rover Sport Autobiography 5.0,630
+LandRover Range Rover Sport Autobiography 5.0 V8,631
+LandRover Range Rover Sport HSE,632
+LandRover Range Rover Sport Supercharged,633
+LandRover Range Rover Sport Supercharged 3.0,634
+LandRover Range Rover Supercharged 5.0,635
+LandRover Range Rover Vogue 3.6,636
+Lexus CT 200h,637
+Lexus ES 250,638
+Lexus ES 300h,639
+Lexus ES 350,640
+Lexus GS 300,641
+Lexus GS 350,642
+Lexus GS 350 AWD,643
+Lexus GS 350 F-Sport,644
+Lexus GS 430,645
+Lexus GX 460,646
+Lexus GX 470,647
+Lexus IS 250,648
+Lexus IS 250C,649
+Lexus IS 300 Luxury,650
+Lexus LS 400,651
+Lexus LS 430,652
+Lexus LS 460,653
+Lexus LS 460L,654
+Lexus LS 460L AWD,655
+Lexus LS 600hL,656
+Lexus LX 470,657
+Lexus LX 570,658
+Lexus NX 200t,659
+Lexus NX 300,660
+Lexus RC 200t,661
+Lexus RC 300,662
+Lexus RC 350 F Sport AWD,663
+Lexus RX 200t,664
+Lexus RX 330,665
+Lexus RX 330 AWD,666
+Lexus RX 350,667
+Lexus RX 350 AWD,668
+Lexus RX 350 F-Sport,669
+Lexus RX 450h,670
+Lexus SC 430,671
+Luxgen M7 2.2 T,672
+Luxgen S5 1.8 AT,673
+Luxgen U7 2.2 Turbo sport,674
+Luxgen U7 2.2T,675
+Maserati GranTurismo 4.2 AT,685
+Maserati Quattroporte 3.0 V6,686
+Mazda 2 1.5 AT,687
+Mazda 2 Deluxe,688
+Mazda 2 Luxury,689
+Mazda 2 Premium,690
+Mazda 2 S,691
+Mazda 2 Sport Luxury,692
+Mazda 2 Sport Premium,693
+Mazda 3 1.5 AT,694
+Mazda 3 1.5L Deluxe,695
+Mazda 3 1.5L Luxury,696
+Mazda 3 1.5L Premium,697
+Mazda 3 1.5L Sport Luxury,698
+Mazda 3 1.5L Sport Premium,699
+Mazda 3 1.6 AT,700
+Mazda 3 2.0 AT,701
+Mazda 3 2.0L Premium,702
+Mazda 3 2.0L Sport Signature Luxury,703
+Mazda 3 2.0L Sport Signature Premium,704
+Mazda 3 Luxury,705
+Mazda 3 S 1.6 AT,706
+Mazda 3 S 2.0 AT,707
+Mazda 3 Sport Luxury,708
+Mazda 6 2.0 AT,709
+Mazda 6 2.0L,710
+Mazda 6 2.0L Premium,711
+Mazda 6 2.5 AT,712
+Mazda 6 2.5L Premium,713
+Mazda 6 Deluxe 2.0 AT,714
+Mazda 6 Luxury 2.0 AT,715
+Mazda 6 Premium 2.0 AT,716
+Mazda 6 Premium 2.5 AT,717
+Mazda 6 Signature Premium 2.5 AT,718
+Mazda BT50 1.9L 4x2 AT,719
+Mazda BT50 2.2L 4x2 AT,720
+Mazda BT50 2.2L 4x2 ATH,721
+Mazda BT50 2.2L 4x4 MT,722
+Mazda BT50 3.2L 4x4 AT,723
+Mazda BT50 Deluxe 2.2L 4x2 AT,724
+Mazda BT50 Luxury 2.2L 4x2 AT,725
+Mazda BT50 Premium 1.9L 4x4 AT,726
+Mazda BT50 Standard 2.2L 4x4 MT,727
+Mazda CX 30 Luxury 2.0 AT,728
+Mazda CX 30 Premium 2.0 AT,729
+Mazda CX3 Deluxe 1.5 AT,730
+Mazda CX3 Luxury 1.5 AT,731
+Mazda CX3 Premium 1.5 AT,732
+Mazda CX5 2.0 AT,733
+Mazda CX5 2.0 AT AWD,734
+Mazda CX5 2.0 Deluxe,735
+Mazda CX5 2.0 Luxury,736
+Mazda CX5 2.0 Premium,737
+Mazda CX5 2.5 AT,738
+Mazda CX5 2.5 AT 2WD,739
+Mazda CX5 2.5 AT AWD,740
+Mazda CX5 2.5 Premium 2WD,741
+Mazda CX5 2.5 Signature Premium 2WD,742
+Mazda CX5 2.5 Signature Premium 2WD I-Activ,743
+Mazda CX5 Deluxe 2.0 AT,744
+Mazda CX5 Luxury 2.0 AT,745
+Mazda CX5 Premium 2.0 AT,746
+Mazda CX5 Premium Exclusive 2.0 AT,747
+Mazda CX5 Premium Sport 2.0 AT,748
+Mazda CX5 Signature Premium 2.5 AT AWD I-Activ,749
+Mazda CX5 Signature Sport 2.5 AT,750
+Mazda CX5 Signature Sport 2.5 AT AWD,751
+Mazda CX8 Deluxe,752
+Mazda CX8 Luxury,753
+Mazda CX8 Premium,754
+Mazda CX8 Premium AWD,755
+Mazda CX9 3.7 AT AWD,756
+Mercedes Benz A class A200,758
+Mercedes Benz A class A250 Sport AMG,759
+Mercedes Benz A class A45 AMG,760
+Mercedes Benz C class C180,761
+Mercedes Benz C class C180 AMG,762
+Mercedes Benz C class C200,763
+Mercedes Benz C class C200 Avantgarde,764
+Mercedes Benz C class C200 Avantgarde Plus,765
+Mercedes Benz C class C200 CGI,766
+Mercedes Benz C class C200 Elegance,767
+Mercedes Benz C class C200 Exclusive,768
+Mercedes Benz C class C230 Avantgarde,769
+Mercedes Benz C class C250,770
+Mercedes Benz C class C250 AMG,771
+Mercedes Benz C class C250 CGI,772
+Mercedes Benz C class C250 Exclusive,773
+Mercedes Benz C class C300 AMG,774
+Mercedes Benz C class C300 AMG First Edition,775
+Mercedes Benz C class C350 AMG,776
+Mercedes Benz CLA class CLA 200,777
+Mercedes Benz CLA class CLA 250 4Matic,778
+Mercedes Benz CLA class CLA 45 AMG 4Matic,779
+Mercedes Benz CLS class CLS 300,780
+Mercedes Benz CLS class CLS 350 AMG,781
+Mercedes Benz CLS class CLS 63 AMG,782
+Mercedes Benz E class E180,783
+Mercedes Benz E class E200,784
+Mercedes Benz E class E200 Edition,785
+Mercedes Benz E class E200 Exclusive,786
+Mercedes Benz E class E200 Sport,787
+Mercedes Benz E class E250,788
+Mercedes Benz E class E250 AMG,789
+Mercedes Benz E class E280,790
+Mercedes Benz E class E300,791
+Mercedes Benz E class E300 AMG,792
+Mercedes Benz E class E300 AMG CBU,793
+Mercedes Benz E class E350,794
+Mercedes Benz E class E350 Coupe,795
+Mercedes Benz E class E400,796
+Mercedes Benz E class E400 AMG,797
+Mercedes Benz E class E400 AMG Cabriolet,798
+Mercedes Benz E class E500,799
+Mercedes Benz GL 320 CDI 4Matic,800
+Mercedes Benz GL 350 BlueTec 4Matic,801
+Mercedes Benz GL 350 CDI 4Matic,802
+Mercedes Benz GL 400 4Matic,803
+Mercedes Benz GL 450 4Matic,804
+Mercedes Benz GL 500 4Matic,805
+Mercedes Benz GL 550 4Matic,806
+Mercedes Benz GL 550 AMG 4Matic,807
+Mercedes Benz GLA class GLA 200,808
+Mercedes Benz GLA class GLA 250 4Matic,809
+Mercedes Benz GLA class GLA 45 AMG 4Matic,810
+Mercedes Benz GLB 200 AMG,811
+Mercedes Benz GLB 35 4Matic,812
+Mercedes Benz GLC 200,813
+Mercedes Benz GLC 200 4Matic,814
+Mercedes Benz GLC 250 4Matic,815
+Mercedes Benz GLC 300 4Matic,816
+Mercedes Benz GLC 300 4Matic Coupe,817
+Mercedes Benz GLC 300 Coupe 4Matic,818
+Mercedes Benz GLE Class GLE 400 4Matic,819
+Mercedes Benz GLE Class GLE 400 4Matic Coupe,820
+Mercedes Benz GLE Class GLE 450 AMG 4Matic Coupe,821
+Mercedes Benz GLK Class GLK220 CDI 4Matic,822
+Mercedes Benz GLK Class GLK250 4Matic,823
+Mercedes Benz GLK Class GLK250 AMG 4Matic,824
+Mercedes Benz GLK Class GLK280 4Matic,825
+Mercedes Benz GLK Class GLK300 4Matic,826
+Mercedes Benz GLK Class GLK300 AMG 4Matic,827
+Mercedes Benz GLS 400 4Matic,828
+Mercedes Benz ML Class ML350,829
+Mercedes Benz ML Class ML350 4Matic,830
+Mercedes Benz ML Class ML400 AMG 4Matic,831
+Mercedes Benz R class R350,832
+Mercedes Benz R class R350 4Matic,833
+Mercedes Benz S class S300L,834
+Mercedes Benz S class S350,835
+Mercedes Benz S class S400L,836
+Mercedes Benz S class S450,837
+Mercedes Benz S class S450L,838
+Mercedes Benz S class S450L Luxury,839
+Mercedes Benz S class S500,840
+Mercedes Benz S class S500L,841
+Mercedes Benz S class S550,842
+Mercedes Benz S class S600,843
+Mercedes Benz S class S63 AMG,844
+Mercedes Benz Sprinter 313 ESP,845
+Mercedes Benz Sprinter Panel Van 311,846
+Mercedes Benz V class V220d CDI,847
+Mercedes Benz V class V250 AMG,848
+Mercedes Benz V class V250 Avantgarde,849
+Mercedes Benz V class V250 Luxury,850
+Mercedes Benz Vito 111 CDI Van,851
+Mercedes Benz Vito Tourer 116 CDI,852
+Mercedes Benz Vito Tourer 121,853
+MG 5 1.5 MT,676
+MG 5 Luxury 1.5 AT,677
+MG 5 Standard 1.5 AT,678
+MG HS 1.5T LUX,679
+MG HS Trophy 1.5 AT 2WD,680
+MG RX5 1.5T LUX,681
+MG ZS Comfort 1.5 AT 2WD,682
+MG ZS Luxury 1.5 AT 2WD,683
+MG ZS Standard 1.5 AT 2WD,684
+Mini Cooper 3Dr,854
+Mini Cooper Clubman JCW,855
+Mini Cooper Clubman S,856
+Mini Cooper Convertible,857
+Mini Cooper JCW Convertible,858
+Mini Cooper S,859
+Mini Cooper S 3 Door,860
+Mini Cooper S 3Dr,861
+Mini Cooper S 5 Door,862
+Mini Cooper S 5Dr,863
+Mini Cooper S Convertible,864
+Mini One 1.5 AT,865
+Mitsubishi Attrage 1.2 AT,867
+Mitsubishi Attrage 1.2 CVT,868
+Mitsubishi Attrage 1.2 CVT Eco,869
+Mitsubishi Attrage 1.2 MT,870
+Mitsubishi Attrage 1.2 MT Eco,871
+Mitsubishi Attrage 1.2CVT,872
+Mitsubishi Attrage Premium 1.2 CVT,874
+Mitsubishi Colt Plus 1.6 AT,877
+Mitsubishi Grandis 2.4 AT,878
+Mitsubishi Grunder 2.4 AT,879
+Mitsubishi Lancer GLX 1.6 AT,880
+Mitsubishi Mirage 1.2 AT,881
+Mitsubishi Mirage 1.2 CVT,882
+Mitsubishi Mirage 1.2 CVT Eco,883
+Mitsubishi Mirage 1.2 MT,884
+Mitsubishi Outlander 2.0 CVT,885
+Mitsubishi Outlander 2.0 CVT Premium,886
+Mitsubishi Outlander 2.4 CVT,887
+Mitsubishi Outlander 2.4 CVT Premium,888
+Mitsubishi Outlander 2.4 CVT Special Edition,889
+Mitsubishi Outlander 3.0 AT,890
+Mitsubishi Outlander Premium 2.0 CVT,891
+Mitsubishi Outlander Sport 2.0 CVT Premium,892
+Mitsubishi Pajero 2.8,893
+Mitsubishi Pajero 3.0,894
+Mitsubishi Pajero 3.0 4x4 AT,895
+Mitsubishi Pajero 3.0 AT,896
+Mitsubishi Pajero 3.5,897
+Mitsubishi Pajero Sport 2.4D 4x2 AT,898
+Mitsubishi Pajero Sport 2.4D 4x2 MT,899
+Mitsubishi Pajero Sport 2.4D 4x4 AT,900
+Mitsubishi Pajero Sport 3.0G 4x2 AT,901
+Mitsubishi Pajero Sport 3.0G 4x2 AT Premium,902
+Mitsubishi Pajero Sport 3.0G 4x4 AT,903
+Mitsubishi Pajero Sport D 4x2 AT,904
+Mitsubishi Pajero Sport D 4x2 MT,905
+Mitsubishi Pajero Sport D 4x4 MT,906
+Mitsubishi Pajero Sport G 4x2 AT,907
+Mitsubishi Pajero Sport G 4x4 AT,908
+Mitsubishi Triton 4x2 AT,909
+Mitsubishi Triton 4x2 AT Mivec,910
+Mitsubishi Triton 4x2 AT Mivec Base,911
+Mitsubishi Triton 4x2 AT Mivec Premium,912
+Mitsubishi Triton 4x2 MT,913
+Mitsubishi Triton 4x4 AT,914
+Mitsubishi Triton 4x4 AT Mivec Premium,916
+Mitsubishi Triton 4x4 MT,917
+Mitsubishi Triton Athlete 4x2 AT,918
+Mitsubishi Triton Athlete 4x2 AT Mivec,919
+Mitsubishi Triton Athlete 4x4 AT,920
+Mitsubishi Triton GLS 4x4 AT,921
+Mitsubishi Triton GLS 4x4 MT,922
+Mitsubishi Triton GLX 4x2 MT,923
+Mitsubishi Xforce Exceed,924
+Mitsubishi Xforce GLX,925
+Mitsubishi Xforce Premium,926
+Mitsubishi Xpander 1.5 AT,927
+Mitsubishi Xpander 1.5 AT Đặc biệt,929
+Mitsubishi Xpander 1.5 AT Special Edition,928
+Mitsubishi Xpander 1.5 MT,930
+Mitsubishi Xpander Cross 1.5 AT,931
+Mitsubishi Xpander Cross 1.5 AT Đặc biệt,932
+Mitsubishi Xpander Premium 1.5 AT,933
+Mitsubishi Zinger GLS 2.4 AT,934
+Mitsubishi Zinger GLS 2.4 MT,935
+Nissan Almera 1.0 MT,936
+Nissan Almera EL 1.0 CVT,937
+Nissan Almera VL 1.0 CVT Cao cấp,938
+Nissan Bluebird Sylphy 2.0 AT,939
+Nissan Grand livina 1.8 AT,940
+Nissan Juke 1.6 AT,941
+Nissan Kicks e-Power V,942
+Nissan Maxima 3.0 AT,943
+Nissan Murano SL 3.5,944
+Nissan Navara Black Edition VL 2.5 AT 4WD,945
+Nissan Navara E 2.5 MT 2WD,946
+Nissan Navara E 2.5MT 2WD,947
+Nissan Navara EL 2.3 AT 2WD,948
+Nissan Navara EL 2.3 AT 2WD Cao cấp,949
+Nissan Navara EL 2.5 AT 2WD,950
+Nissan Navara EL 2.5AT 2WD,951
+Nissan Navara EL A-IVI 2.5 AT 2WD,952
+Nissan Navara EL Premium R,953
+Nissan Navara EL Premium Z,954
+Nissan Navara LE 2.5MT 4WD,955
+Nissan Navara Pro-4X 2.3 AT 4WD,956
+Nissan Navara Pro-4X 2.5 AT 4WD,957
+Nissan Navara SL 2.5 MT 4WD,958
+Nissan Navara SL 2.5MT 4WD,959
+Nissan Navara VE 2.5 AT 2WD,960
+Nissan Navara VL 2.3 AT 4WD Cao cấp,961
+Nissan Navara VL 2.5 AT 4WD,962
+Nissan Navara VL Premium R,963
+Nissan Navara XE 2.5AT 4WD,964
+Nissan Pathfinder S 3.5 V6 4WD,965
+Nissan Patrol 4.2 MT,966
+Nissan Qashqai LE AWD,967
+Nissan Qashqai SE AWD,968
+Nissan Sunny Q Series XT Premium,969
+Nissan Sunny Q Series XV Premium,970
+Nissan Sunny XL,971
+Nissan Sunny XV,972
+Nissan Sunny XV Premium,973
+Nissan Sunny XV Premium S,974
+Nissan Teana 2.0 AT,975
+Nissan Teana 2.5 AT 250XV,976
+Nissan Teana 2.5 SL,977
+Nissan Terra E 2.5 AT 2WD,978
+Nissan Terra S 2.5 MT 2WD,979
+Nissan Terra V 2.5 AT 4WD,980
+Nissan Terrano II 2.7 MT,981
+Nissan Tiida 1.8 AT,982
+Nissan X trail 2.0 SL 2WD,983
+Nissan X trail 2.0 SL Luxury,984
+Nissan X trail 2.5 SV 4WD,985
+Nissan X trail 2.5 SV 4WD PREMIUM,986
+Nissan X trail V Series 2.0 SL Luxury,987
+Nissan X trail V Series 2.0 SL Premium,988
+Nissan X trail V Series 2.5 SV 4WD,989
+Nissan X trail V Series 2.5 SV Luxury 4WD,990
+Nissan X trail V Series 2.5 SV Premium 4WD,991
+Peugeot 107 1.0 AT,992
+Peugeot 2008 Active 1.2 AT,993
+Peugeot 2008 GT Line 1.2 AT,994
+Peugeot 208 1.6 AT,995
+Peugeot 3008 1.6 AT,996
+Peugeot 3008 1.6 AT FL,997
+Peugeot 3008 Active 1.6 AT,1000
+Peugeot 3008 AL,998
+Peugeot 3008 Allure 1.6 AT,1001
+Peugeot 3008 AT,999
+Peugeot 3008 GT,1002
+Peugeot 308 GT Line 1.6 AT,1003
+Peugeot 404 1.8 MT,1004
+Peugeot 408 Allure 1.6 AT,1005
+Peugeot 408 GT 1.6 AT,1006
+Peugeot 408 Premium 1.6 AT,1007
+Peugeot 408 Premium 2.0 AT,1008
+Peugeot 5008 1.6 AT,1009
+Peugeot 5008 Allure 1.6 AT,1010
+Peugeot 5008 GT 1.6 AT,1011
+Peugeot 508 1.6 AT,1012
+Peugeot Traveller Luxury,1013
+Peugeot Traveller Premium,1014
+Porsche Cayenne 3.0 V6 Diesel,1015
+Porsche Cayenne 3.6 V6,1016
+Porsche Cayenne GTS,1017
+Porsche Cayenne S,1018
+Porsche Cayenne Turbo,1019
+Porsche Macan 2.0,1020
+Porsche Macan S,1021
+Porsche Panamera 3.6 V6,1022
+Porsche Panamera 4,1023
+Porsche Panamera 4S,1024
+Porsche Panamera S,1025
+Porsche Panamera Turbo,1026
+Renault Fluence 2.0 AT,1027
+Renault Koleos 2.5 AT,1028
+Renault Latitude 2.0 AT,1029
+Renault Sandero Stepway 1.6 AT,1030
+Samsung QM5 2.0 AT,1033
+Scion Xb 2.4 AT,1034
+Scion Xd 1.8 AT,1035
+Skoda Karoq Style 1.4 AT,1036
+Smart Fortwo 1.0 AT,1037
+Ssangyong Kyron LV7,1038
+Ssangyong Tivoli 1.6 AT 2WD,1039
+Ssangyong XLV 1.6 AT,1040
+Subaru BRZ 2.4 AT EyeSight,1041
+Subaru Forester 2.0i-L,1043
+Subaru Forester 2.0i-S,1044
+Subaru Forester 2.0i-S EyeSight,1045
+Subaru Forester 2.0i-S EyeSight GT Edition,1046
+Subaru Forester 2.0XT,1042
+Subaru Outback 2.5i,1047
+Subaru XV 2.0i-S,1048
+Suzuki Celerio 1.0 AT,1049
+Suzuki Celerio 1.0 MT,1050
+Suzuki Ciaz 1.4 AT,1051
+Suzuki Ertiga 1.4 AT,1052
+Suzuki Ertiga GL 1.5 MT,1053
+Suzuki Ertiga GLX 1.5 AT,1054
+Suzuki Ertiga Hybrid 1.5 AT,1055
+Suzuki Ertiga Sport 1.5 AT,1056
+Suzuki Grand vitara 2.0 AT,1057
+Suzuki Super Carry Van Blind Van,1058
+Suzuki Swift 1.4 AT,1059
+Suzuki Swift GLX 1.2 AT,1060
+Suzuki Swift RS,1061
+Suzuki Swift Special,1062
+Suzuki Swift Special 1.2 AT,1063
+Suzuki Vitara 1.6 AT,1064
+Suzuki XL7 1.5 AT,1065
+Suzuki XL7 Hybrid 1.5 AT,1066
+Suzuki XL7 Sport Limited 1.5 AT,1067
+Teraco Tera100 S Thùng Bạt,1069
+Teraco Tera-V 1.5 MT,1068
+Thaco Frontier Van TF450V 2S,1073
+Thaco Frontier Van TF480V 5S,1074
+Toyota 4 Runner Limited,1079
+Toyota 4 Runner SR5,1080
+Toyota 86 2.0 AT,1081
+Toyota Alphard 2.4,1082
+Toyota Alphard 3.5 V6,1083
+Toyota Avanza 1.3 MT,1084
+Toyota Avanza 1.5 AT,1085
+Toyota Avanza Premio 1.5 AT,1086
+Toyota Avanza Premio 1.5 MT,1087
+Toyota Aygo 1.0 AT,1088
+Toyota Camry 2.0E,1089
+Toyota Camry 2.0G,1090
+Toyota Camry 2.0Q,1091
+Toyota Camry 2.4G,1092
+Toyota Camry 2.5G,1093
+Toyota Camry 2.5HV,1094
+Toyota Camry 2.5Q,1095
+Toyota Camry 3.0V,1096
+Toyota Camry 3.5Q,1097
+Toyota Camry LE 2.4,1098
+Toyota Camry LE 2.5,1099
+Toyota Camry LE 2.5 AT,1100
+Toyota Camry LE 3.5,1101
+Toyota Camry SE 2.4,1102
+Toyota Camry SE 2.5,1103
+Toyota Camry XLE 2.4,1104
+Toyota Camry XLE 2.5,1105
+Toyota Corolla altis 1.8E AT,1115
+Toyota Corolla altis 1.8G,1116
+Toyota Corolla altis 1.8G AT,1117
+Toyota Corolla altis 1.8G MT,1118
+Toyota Corolla altis 1.8HEV,1119
+Toyota Corolla altis 1.8V,1120
+Toyota Corolla altis 2.0V,1121
+Toyota Corolla altis 2.0V AT,1122
+Toyota Corolla altis 2.0Z,1123
+Toyota Corolla Cross 1.8G,1106
+Toyota Corolla Cross 1.8HEV,1107
+Toyota Corolla Cross 1.8HV,1108
+Toyota Corolla Cross 1.8V,1109
+Toyota Corolla GLi 1.8 AT,1110
+Toyota Corolla LE 1.8 AT,1111
+Toyota Corolla S 1.8 AT,1112
+Toyota Corolla XLi 1.3 AT,1113
+Toyota Corolla XLi 1.6 AT,1114
+Toyota Crown Royal Saloon 3.0 AT,1124
+Toyota Crown Super Saloon 3.0 MT,1125
+Toyota Fortuner 2.4G 4x2 AT,1126
+Toyota Fortuner 2.4G 4x2 AT Legender,1127
+Toyota Fortuner 2.4G 4x2 MT,1128
+Toyota Fortuner 2.4L 4x2 AT,1129
+Toyota Fortuner 2.4L 4x2 MT,1130
+Toyota Fortuner 2.5G,1131
+Toyota Fortuner 2.7L 4x2 AT,1132
+Toyota Fortuner 2.7V 4X2 AT,1133
+Toyota Fortuner 2.7V 4x2 AT,1134
+Toyota Fortuner 2.7V 4x2 AT TRD,1135
+Toyota Fortuner 2.7V 4x4 AT,1136
+Toyota Fortuner 2.8V 4x4 AT,1137
+Toyota Fortuner 2.8V 4x4 AT Legender,1138
+Toyota Fortuner Legender 2.4L 4x2 AT,1139
+Toyota Fortuner Legender 2.8L 4x4 AT,1140
+Toyota Fortuner SR5 2.7 AT,1141
+Toyota Fortuner TRD Sportivo 4x2 AT,1142
+Toyota Fortuner TRD Sportivo 4x4 AT,1143
+Toyota Hiace 2.5,1144
+Toyota Hiace 2.7,1145
+Toyota Hiace Super Wagon 2.7,1146
+Toyota Hiace Van 2.5,1147
+Toyota Highlander LE 2.7,1148
+Toyota Highlander Limited 3.5,1149
+Toyota Highlander Limited 3.5 AWD,1150
+Toyota Highlander SE 2.7,1151
+Toyota Hilux 2.4E 4x2 AT,1152
+Toyota Hilux 2.4E 4x2 MT,1153
+Toyota Hilux 2.4L 4x2 AT,1154
+Toyota Hilux 2.5E 4x2 MT,1155
+Toyota Hilux 2.8G 4x4 AT,1156
+Toyota Hilux 2.8L 4x4 AT,1157
+Toyota Hilux 3.0G 4x4 AT,1158
+Toyota Hilux 3.0G 4x4 MT,1159
+Toyota Hilux Adventure 2.8L 4x4 AT,1160
+Toyota Hilux GR Sport 2.8L 4x4 AT,1162
+Toyota Innova 2.0 MT,1164
+Toyota Innova 2.0 Venturer,1165
+Toyota Innova 2.0E,1166
+Toyota Innova 2.0G,1167
+Toyota Innova 2.0J,1168
+Toyota Innova 2.0V,1169
+Toyota Innova Cross 2.0 CVT,1170
+Toyota Innova Cross HEV 2.0 CVT,1171
+Toyota Innova E 2.0 MT,1172
+Toyota Innova G,1173
+Toyota Innova G 2.0 AT,1174
+Toyota Innova G SR,1175
+Toyota Innova GSR,1176
+Toyota Innova V,1177
+Toyota Innova Venturer 2.0 AT,1178
+Toyota IQ 1.0 AT,1163
+Toyota Land Cruiser BJ40 3.0 MT,1179
+Toyota Land Cruiser GX 4.2 MT,1180
+Toyota Land Cruiser GX 4.5,1181
+Toyota Land Cruiser GX.R 4.5,1182
+Toyota Land Cruiser II 2.4 MT,1183
+Toyota Land Cruiser II 2.8 MT,1184
+Toyota Land Cruiser VX 4.6 V8,1185
+Toyota Prado GX 2.7 AT,1186
+Toyota Prado TXL 2.7L,1187
+Toyota Prado VX 2.7L,1188
+Toyota Prado VX 4.0 AT,1189
+Toyota Previa 2.4 AT,1190
+Toyota Previa GL 2.4 AT,1191
+Toyota Raize G 1.0 CVT,1201
+Toyota RAV4 2.4 AT,1193
+Toyota RAV4 2.5 AT AWD,1194
+Toyota RAV4 LE 2.5 AWD,1195
+Toyota RAV4 Limited 2.4 FWD,1196
+Toyota RAV4 Limited 2.5 AT,1197
+Toyota RAV4 Limited 3.5 V6,1198
+Toyota RAV4 Limited 3.5 V6 FWD,1199
+Toyota RAV4 XLE 2.5 FWD,1200
+Toyota Rush 1.5S AT,1202
+Toyota Sequoia Limited 4.7 AT 4WD,1203
+Toyota Sienna LE 2.7,1204
+Toyota Sienna LE 3.3,1205
+Toyota Sienna LE 3.5,1206
+Toyota Sienna Limited 3.5,1207
+Toyota Sienna Limited 3.5 AWD,1208
+Toyota Sienna SE 3.5 AWD,1209
+Toyota Sienna XLE 3.5,1210
+Toyota Sienna XLE Limited 3.3,1211
+Toyota Solara SLE 3.3 V6,1212
+Toyota Townace 2.2 AT 4WD,1213
+Toyota Tundra 1794 Edition,1214
+Toyota Tundra 5.7 V8 4x4 AT,1215
+Toyota Veloz Cross 1.5 CVT,1216
+Toyota Veloz Cross Top 1.5 CVT,1217
+Toyota Venza 2.7,1218
+Toyota Venza 2.7 AWD,1219
+Toyota Venza 3.5,1220
+Toyota Venza 3.5 AWD,1221
+Toyota Vios 1.3 Limo,1222
+Toyota Vios 1.3J,1223
+Toyota Vios 1.3MT,1224
+Toyota Vios 1.5 TRD,1225
+Toyota Vios 1.5E,1226
+Toyota Vios 1.5E CVT,1227
+Toyota Vios 1.5E MT,1228
+Toyota Vios 1.5G,1229
+Toyota Vios 1.5G CVT,1230
+Toyota Vios E 1.5 MT,1231
+Toyota Vios E CVT,1232
+Toyota Vios G 1.5 CVT,1233
+Toyota Vios GR-S 1.5 CVT,1234
+Toyota Vios Limo,1235
+Toyota Wigo 1.2 AT,1236
+Toyota Wigo 1.2 MT,1237
+Toyota Wigo 1.2G AT,1238
+Toyota Wigo 1.2G MT,1239
+Toyota Wigo E 1.2 MT,1240
+Toyota Wigo G 1.2 AT,1241
+Toyota Yaris 1.3 AT,1242
+Toyota Yaris 1.3E,1243
+Toyota Yaris 1.3G,1244
+Toyota Yaris 1.5 AT,1245
+Toyota Yaris 1.5G,1246
+Toyota Yaris Cross 1.5 D-CVT,1247
+Toyota Yaris Cross HEV 1.5 CVT,1248
+Toyota Yaris G 1.5 AT,1249
+Toyota Yaris RS 1.5 AT,1250
+Toyota Zace GL,1251
+VinFast Fadil 1.4 AT,1253
+VinFast Fadil 1.4 AT Plus,1254
+VinFast Fadil 1.4 AT Premium,1255
+VinFast Lux A 2.0 AT,1259
+VinFast Lux A 2.0 Plus,1262
+VinFast Lux A 2.0 Premium,1263
+VinFast Lux SA 2.0 AT,1265
+VinFast Lux SA 2.0 Plus,1268
+VinFast Lux SA 2.0 Premium,1269
+VinFast VF e34 AT,1271
+VinFast VF3 Plus,1272
+VinFast VF5 Plus,1273
+VinFast VF6 Plus,1274
+VinFast VF6 S,1275
+VinFast VF7 Plus,1276
+VinFast VF7 S,1277
+VinFast VF8 Eco,1278
+VinFast VF8 Lux,1279
+VinFast VF8 Lux Plus,1280
+VinFast VF8 Plus,1281
+VinFast VF8 S,1282
+VinFast VF9 Eco,1283
+VinFast VF9 Plus,1284
+Volkswagen Eos 2.0 TSI Cabriolet,1285
+Volkswagen New Beetle 1.6 AT,1286
+Volkswagen New Beetle 2.5 AT,1287
+Volkswagen Passat 1.8 Bluemotion,1288
+Volkswagen Passat 1.8TSI,1289
+Volkswagen Passat CC 2.0 AT,1290
+Volkswagen Polo 1.6 AT,1291
+Volkswagen Routan SE 3.8 AT,1292
+Volkswagen Scirocco 1.4 AT,1293
+Volkswagen Scirocco 2.0 AT,1294
+Volkswagen T-Cross Elegance 1.0 AT,1295
+Volkswagen T-Cross Luxury 1.0 AT,1296
+Volkswagen Teramont 2.0 AT,1297
+Volkswagen Teramont Limited Edition 2.0 AT,1298
+Volkswagen Tiguan 2.0 AT,1299
+Volkswagen Tiguan Allspace,1300
+Volkswagen Tiguan Allspace Luxury,1301
+Volkswagen Touareg 2.5 R5 TDI,1302
+Volkswagen Touareg 3.6 AT,1303
+Volkswagen Viloran Premium,1305
+Volkswagen Virtus Luxury 1.0 AT,1306
+Volvo S60 B5 R-Design AWD,1307
+Volvo S60 T5 R-Design AWD,1308
+Volvo S90 Inscription LWB B6 AWD,1309
+Volvo S90 Inscription T6 AWD,1310
+Volvo S90 LWB Ultimate B6 AWD,1311
+Volvo S90 T5 Inscription,1312
+Volvo V90 Cross County T6 AWD,1313
+Volvo XC40 T5 AWD R-Design,1314
+Volvo XC40 Ultimate B5 AWD,1315
+Volvo XC60 Inscription B6 AWD,1316
+Volvo XC60 T6 AWD Inscription,1317
+Volvo XC60 T6 AWD R-Design,1318
+Volvo XC90 T6 Inscription,1319
+Zotye Z8 2.0 AT,1320

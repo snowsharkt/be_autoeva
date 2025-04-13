@@ -39,11 +39,23 @@ namespace :import do
     puts "Versions imported successfully!"
   end
 
+  desc "Import car's info from CSV file"
+  task car_info: :environment do
+    CSV.foreach(Rails.root.join('db/data/car_info.csv'), headers: true) do |row|
+      CarInfo.find_or_create_by!(name: row['car_name']) do |car|
+        car.name = row['car_name']
+        car.name_encoded = row['car_name_encoded']
+      end
+    end
+    puts "Car info imported successfully!"
+  end
+
   desc "Import all data from CSV files in proper order"
   task all: :environment do
     Rake::Task['import:brands'].invoke
     Rake::Task['import:models'].invoke
     Rake::Task['import:versions'].invoke
+    Rake::Task['import:car_info'].invoke
     puts "All data imported successfully!"
   end
 end
