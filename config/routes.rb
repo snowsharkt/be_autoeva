@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
     resources :users
+    resources :comments, only: [:index, :show, :destroy]
 
     root to: 'dashboard#index'
   end
@@ -31,8 +32,10 @@ Rails.application.routes.draw do
     resources :sale_posts do
       resources :sale_post_images, only: [:create, :destroy]
       resources :favorites, only: [:create]
+      resources :comments, only: [:index, :create]
     end
 
+    resources :comments, only: [:show, :update, :destroy]
     resources :favorites, only: [:index, :destroy]
 
     resources :brands, only: [:index]
