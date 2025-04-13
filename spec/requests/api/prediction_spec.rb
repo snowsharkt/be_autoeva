@@ -8,11 +8,13 @@ RSpec.describe "Prediction API" do
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          car_name: { type: :string, example: 'Toyota Land Cruiser VX 4.6 V8' },
+          brand_id: { type: :integer, example: 1 },
+          model_id: { type: :integer, example: 1 },
+          version_id: { type: :integer, example: 1 },
           year_of_manufacture: { type: :integer, example: 2020 },
           mileage: { type: :integer, example: 10000 },
         },
-        required: %w[car_name year_of_manufacture mileage],
+        required: %w[brand_id model_id version_id year_of_manufacture mileage],
       }
 
       response '200', :success do
