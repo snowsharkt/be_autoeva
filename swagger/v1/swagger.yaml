@@ -203,6 +203,320 @@ paths:
           description: signed out successfully
         '404':
           description: user not found
+  "/api/sale_posts/{sale_post_id}/comments":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Lists all comments for a sale post
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: comments found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    content:
+                      type: string
+                    created_at:
+                      type: string
+                      format: datetime
+                    updated_at:
+                      type: string
+                      format: datetime
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                        name:
+                          type: string
+                    sale_post:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                  required:
+                  - id
+                  - content
+                  - created_at
+                  - updated_at
+                  - user
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+        '404':
+          description: sale post not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Sale post not found
+    post:
+      summary: Creates a comment on a sale post
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: comment created
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                  required:
+                  - content
+              required:
+              - comment
+  "/api/comments/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Comment ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a specific comment
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: comment found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  content:
+                    type: string
+                  created_at:
+                    type: string
+                    format: datetime
+                  updated_at:
+                    type: string
+                    format: datetime
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      name:
+                        type: string
+                  sale_post:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      title:
+                        type: string
+                required:
+                - id
+                - content
+                - created_at
+                - updated_at
+                - user
+                - sale_post
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+        '404':
+          description: comment not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Comment not found
+    patch:
+      summary: Updates a comment
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: comment updated
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: comment not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                  required:
+                  - content
+              required:
+              - comment
+    delete:
+      summary: Deletes a comment
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: comment deleted
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: comment not found
   "/api/auth/confirmation":
     post:
       summary: Resend confirmation instructions
@@ -273,6 +587,172 @@ paths:
                     example:
                     - Confirmation token is invalid or has expired. Please request
                       a new one.
+  "/api/favorites":
+    get:
+      summary: Lists all favorites for current user
+      tags:
+      - Favorites
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: favorites found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    created_at:
+                      type: string
+                      format: datetime
+                    sale_post:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                        status:
+                          type: string
+                        year:
+                          type: integer
+                        odo:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: datetime
+                        updated_at:
+                          type: string
+                          format: datetime
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                  required:
+                  - id
+                  - created_at
+                  - sale_post
+                  - user
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+  "/api/favorites/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Favorite ID
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Removes a post from favorites
+      tags:
+      - Favorites
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: favorite removed
+        '401':
+          description: unauthorized
+        '404':
+          description: favorite not found
+  "/api/sale_posts/{sale_post_id}/favorites":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Adds a post to favorites
+      tags:
+      - Favorites
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: favorite created
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
   "/api/predicts":
     post:
       summary: Predict price

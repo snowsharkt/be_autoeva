@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  skip_token_auth
   before_action :authenticate_user!
   before_action :ensure_admin
 
