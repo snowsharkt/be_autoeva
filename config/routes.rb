@@ -42,5 +42,7 @@ Rails.application.routes.draw do
     resources :versions, only: [:index]
   end
 
+  get '/images/:id', to: 'files#get_image', as: :custom_image
+
   root to: 'home#index'
 end

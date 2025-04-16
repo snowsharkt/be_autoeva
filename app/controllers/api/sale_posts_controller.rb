@@ -90,7 +90,7 @@ class Api::SalePostsController < Api::ApiController
   def create_images_by_blob_ids
     params[:images].each do |image_id|
       upload_image = ActiveStorage::Blob.find_by(id: image_id)
-      @sale_post.images.create(image: upload_image) if upload_image.present?
+      @sale_post.images.attach(upload_image) if upload_image.present?
     end
   end
 end
