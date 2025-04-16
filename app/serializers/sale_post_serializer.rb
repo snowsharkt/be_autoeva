@@ -1,7 +1,7 @@
 class SalePostSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :title, :description, :price, :status, :year, :odo, :created_at, :updated_at, :images
+  attributes :id, :title, :description, :price, :status, :year, :odo, :created_at, :updated_at, :favorited, :images
 
   belongs_to :user
   belongs_to :brand
@@ -9,6 +9,11 @@ class SalePostSerializer < ActiveModel::Serializer
   belongs_to :version
   has_many :sale_post_images
   has_many :comments
+
+  def favorited
+    return false unless current_user
+    object.favorites.exists?(user_id: current_user.id)
+  end
 
   def images
     return [] unless object.images.attached?

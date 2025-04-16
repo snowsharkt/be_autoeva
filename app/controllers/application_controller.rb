@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   include DeviseTokenAuth::Concerns::SetUserByToken
 
+  def self.skip_token_auth
+    skip_before_action :verify_token_authenticity, raise: false
+  end
+
   private
 
   def json_request?
