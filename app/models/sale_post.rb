@@ -10,6 +10,8 @@ class SalePost < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
   has_many :reports, as: :reportable, dependent: :destroy
 
+  has_many_attached :images
+
   validates :title, presence: true
   validates :status, presence: true, inclusion: { in: %w(active sold) }
   validates :price, numericality: { greater_than: 0 }, allow_nil: true

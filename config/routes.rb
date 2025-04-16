@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :update, :destroy]
     resources :sale_posts do
       resources :sale_post_images, only: [:create, :destroy]
+      collection do
+        post 'upload', to: 'sale_posts#upload'
+      end
     end
 
     resources :brands, only: [:index]
