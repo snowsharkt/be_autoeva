@@ -17,7 +17,9 @@ class Api::SalePostsController < Api::ApiController
 
   def create
     @sale_post = current_user.sale_posts.new(sale_post_params)
-
+    @sale_post.title = "#{@sale_post.brand.name} #{@sale_post.model.name} #{@sale_post.version.name}"
+    @sale_post.status = 'active'
+    @sale_post.location = sale_post_params[:location]
     if @sale_post.save
       create_images_by_blob_ids if params[:images].present?
       render json: @sale_post, status: :created
@@ -76,7 +78,7 @@ class Api::SalePostsController < Api::ApiController
 
   def sale_post_params
     params.require(:sale_post).permit(
-      :title, :description, :price, :status, :year, :odo,
+      :description, :price, :status, :year, :odo, :location,
       :brand_id, :model_id, :version_id
     )
   end

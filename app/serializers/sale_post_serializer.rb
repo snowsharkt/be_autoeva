@@ -1,7 +1,7 @@
 class SalePostSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :title, :description, :price, :status, :year, :odo, :created_at, :updated_at, :favorited, :images
+  attributes :id, :title, :description, :price, :status, :year, :odo, :created_at, :updated_at, :favorited, :images, :location
 
   belongs_to :user
   belongs_to :brand
