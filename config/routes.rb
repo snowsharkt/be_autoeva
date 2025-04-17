@@ -35,6 +35,9 @@ Rails.application.routes.draw do
       resources :sale_post_images, only: [:create, :destroy]
       resources :favorites, only: [:create]
       resources :comments, only: [:index, :create]
+      collection do
+        post 'upload', to: 'sale_posts#upload'
+      end
     end
 
     resources :comments, only: [:show, :update, :destroy]
@@ -44,6 +47,8 @@ Rails.application.routes.draw do
     resources :models, only: [:index]
     resources :versions, only: [:index]
   end
+
+  get '/images/:id', to: 'files#get_image', as: :custom_image
 
   root to: 'home#index'
 end

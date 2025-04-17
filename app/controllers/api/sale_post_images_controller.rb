@@ -2,7 +2,6 @@ class Api::SalePostImagesController < Api::ApiController
   before_action :set_sale_post
   before_action :authorize_owner!
   before_action :set_image, only: [:destroy]
-
   def create
     @image = @sale_post.sale_post_images.new(image_params)
 
