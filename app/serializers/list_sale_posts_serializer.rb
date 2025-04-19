@@ -1,7 +1,7 @@
 class ListSalePostsSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :title, :price, :status, :year, :odo, :image, :created_at, :updated_at, :favorited
+  attributes :id, :title, :price, :status, :year, :odo, :location, :image, :created_at, :updated_at, :favorited
 
   def favorited
     return false unless scope
