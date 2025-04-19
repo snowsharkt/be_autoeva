@@ -30,7 +30,11 @@ Rails.application.routes.draw do
 
     post "predicts", to: "predictions#predict"
 
-    resources :users, only: [:index, :show, :update, :destroy]
+    resources :users, only: [:index, :show, :update, :destroy] do
+      collection do
+        get "sale_posts", to: "users#get_posts"
+      end
+    end
     resources :sale_posts do
       resources :sale_post_images, only: [:create, :destroy]
       resources :favorites, only: [:create]
