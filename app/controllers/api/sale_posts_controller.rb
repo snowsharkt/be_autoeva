@@ -38,7 +38,7 @@ class Api::SalePostsController < Api::ApiController
   end
 
   def destroy
-    if @sale_post.destroy
+    if @sale_post.discard
       render json: { message: 'Sale post deleted successfully' }, status: :ok
     else
       render json: { errors: @sale_post.errors }, status: :unprocessable_entity
