@@ -1,6 +1,6 @@
 class Api::SalePostsController < Api::ApiController
-  before_action :set_sale_post, only: [:show, :update, :destroy]
-  before_action :authorize_owner!, only: [:update, :destroy]
+  before_action :set_sale_post, only: [:show, :update, :destroy, :show_user_post]
+  before_action :authorize_owner!, only: [:update, :destroy, :show_user_post]
 
   skip_before_action :authenticate_user!, only: [:upload]
 
@@ -30,15 +30,15 @@ class Api::SalePostsController < Api::ApiController
 
   def update
     if @sale_post.update(sale_post_params)
-      create_images_by_blob_ids if params[:images].present?
-      render json: @sale_post, include: [:sale_post_images]
+      update_images_by_blob_ids if params[:images].present?
+      render json: @sale_post, status: :ok
     else
       render json: { errors: @sale_post.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if @sale_post.destroy
+    if @sale_post.discard
       render json: { message: 'Sale post deleted successfully' }, status: :ok
     else
       render json: { errors: @sale_post.errors }, status: :unprocessable_entity
@@ -60,6 +60,10 @@ class Api::SalePostsController < Api::ApiController
     else
       render json: { error: "No image provided" }, status: :unprocessable_entity
     end
+  end
+
+  def show_user_post
+    render json: @sale_post, include: [:brand, :model, :version]
   end
 
   private
@@ -93,6 +97,19 @@ class Api::SalePostsController < Api::ApiController
     params[:images].each do |image_id|
       upload_image = ActiveStorage::Blob.find_by(id: image_id)
       @sale_post.images.attach(upload_image) if upload_image.present?
+    end
+  end
+
+  def update_images_by_blob_ids
+    current_images = @sale_post.images.map { |image| image&.blob&.id }
+    new_images = params[:images] - current_images
+    deleted_images = current_images - params[:images]
+    new_images.each do |image_id|
+      upload_image = ActiveStorage::Blob.find_by(id: image_id)
+      @sale_post.images.attach(upload_image) if upload_image.present?
+    end
+    deleted_images.each do |image_id|
+      @sale_post.images.find_by(blob_id: image_id).purge
     end
   end
 end

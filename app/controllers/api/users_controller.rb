@@ -36,6 +36,22 @@ class Api::UsersController < Api::ApiController
     end
   end
 
+  def get_posts
+    current_posts = current_user.sale_posts
+                                .includes(:images_attachments, :images_blobs, favorites: :user)
+                                .order(created_at: :desc)
+                                .paginate(page: params[:page], per_page: ENV['PER_PAGE'] || 20)
+    render json: {
+      data: ActiveModelSerializers::SerializableResource.new(
+        current_posts,
+        each_serializer: ListSalePostsSerializer,
+        scope: current_user
+      ),
+      current_page: current_posts.current_page,
+      total_pages: current_posts.total_pages
+    }
+  end
+
   private
 
   def set_user

@@ -1,4 +1,7 @@
 class SalePost < ApplicationRecord
+  include Discard::Model
+  default_scope -> { kept }
+
   belongs_to :user
   belongs_to :brand
   belongs_to :model
