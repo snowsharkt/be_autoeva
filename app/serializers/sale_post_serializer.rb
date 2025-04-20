@@ -19,7 +19,10 @@ class SalePostSerializer < ActiveModel::Serializer
     return [] unless object.images.attached?
 
     object.images.map do |image|
-      custom_image_url(image.blob.id)
+      {
+        id: image.blob.id,
+        url: custom_image_url(image.blob.id)
+      }
     end
   end
 

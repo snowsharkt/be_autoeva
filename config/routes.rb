@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :create]
       collection do
         post 'upload', to: 'sale_posts#upload'
+        get 'show_user_post/:id', to: 'sale_posts#show_user_post'
       end
     end
 
