@@ -56,6 +56,8 @@ namespace :import do
     Rake::Task['import:models'].invoke
     Rake::Task['import:versions'].invoke
     Rake::Task['import:car_info'].invoke
+    Rake::Task['import:sale_posts'].invoke
+    Rake::Task['import:sale_post_images'].invoke
     puts "All data imported successfully!"
   end
 end

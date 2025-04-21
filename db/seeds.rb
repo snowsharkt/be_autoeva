@@ -1,3 +1,4 @@
+puts "Creating admin user..."
 User.create!(
   email: 'admin@example.com',
   password: 'password123',
@@ -8,6 +9,10 @@ User.create!(
   phone_number: '1234567890'
 )
 
+# Create sample users
+puts "Creating sample users..."
+Rake::Task['sample:users'].invoke
+
 # Import car data
-puts "Importing car brands, models, and versions data..."
+puts "Importing car, posts, data..."
 Rake::Task['import:all'].invoke
