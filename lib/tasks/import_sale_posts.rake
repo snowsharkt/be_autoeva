@@ -13,6 +13,8 @@ namespace :import do
 
     sale_posts_file = Rails.root.join('db/data/bonbanh_car_details.csv')
 
+    puts "Importing sale posts..."
+
     CSV.foreach(sale_posts_file, headers: true) do |row|
       selected_user = regular_users.sample
 
@@ -29,8 +31,6 @@ namespace :import do
         post.location = row['location']
         post.status = row['status'] || 'active'
       end
-
-      puts "Imported sale post ID: #{sale_post.id} assigned to user: #{selected_user.email}"
     end
 
     puts "Sale posts imported successfully!"
@@ -40,8 +40,10 @@ namespace :import do
   task sale_post_images: :environment do
     images_file = Rails.root.join('db/data/bonbanh_car_images.csv')
 
+    puts "Importing sale post images..."
+
     CSV.foreach(images_file, headers: true) do |row|
-      SalePostImage.find_or_create_by!(sale_post_id: row[0], image_url: row[0])
+      SalePostImage.find_or_create_by!(sale_post_id: row[0], image_url: row[1])
     end
 
     puts "Sale post images imported successfully!"
