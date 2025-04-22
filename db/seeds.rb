@@ -6,7 +6,8 @@ User.create!(
   first_name: 'Admin',
   last_name: 'User',
   role: 'admin',
-  phone_number: '1234567890'
+  phone_number: '1234567890',
+  confirmed_at: Time.now
 )
 
 # Create sample users
