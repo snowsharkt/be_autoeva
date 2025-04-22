@@ -10,9 +10,13 @@ done
 
 bundle check || bundle install
 
-bundle exec rails db:prepare
+if [ "$RAILS_ENV" = "development" ]; then
+  bundle exec rails db:prepare
+fi
 
 if [ "$RAILS_ENV" = "production" ]; then
+  echo "migrate db"
+  bundle exec rails db:migrate
   echo "Clearing cache..."
   rm -rf public/assets tmp/cache
   echo "Precompiling assets..."
