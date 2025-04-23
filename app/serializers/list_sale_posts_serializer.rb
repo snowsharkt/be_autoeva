@@ -8,10 +8,13 @@ class ListSalePostsSerializer < ActiveModel::Serializer
     object.favorites.exists?(user_id: scope&.id)
   end
 
-  def image
-    return [] unless object.images.attached?
+  def location
+    object.location.gsub(/\n.*/m, '').strip
+  end
 
-    custom_image_url(object.images.first.blob.id)
+  def image
+    return custom_image_url(object.images.first.blob.id) if object.images.attached?
+    object.sale_post_images.first.image_url if object.sale_post_images.present?
   end
 
   def default_url_options
