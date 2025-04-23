@@ -2,7 +2,7 @@ class Api::SalePostsController < Api::ApiController
   before_action :set_sale_post, only: [:show, :update, :destroy, :show_user_post]
   before_action :authorize_owner!, only: [:update, :destroy, :show_user_post]
 
-  skip_before_action :authenticate_user!, only: [:upload]
+  skip_before_action :authenticate_user!, only: [:upload, :show]
 
   def index
     @sale_posts = SalePost.includes(:user, :brand, :model, :version, :sale_post_images)
@@ -12,7 +12,19 @@ class Api::SalePostsController < Api::ApiController
   end
 
   def show
-    render json: @sale_post, include: [:user, :brand, :model, :version, :sale_post_images, comments: { include: :user }]
+    @related_posts = get_related_posts
+    render json: {
+      sale_post: ActiveModelSerializers::SerializableResource.new(
+        @sale_post,
+        include: [:user, :sale_post_images, comments: { include: :user }],
+        serializer: SalePostDetailsSerializer,
+        scope: current_user
+      ),
+      related_sale_posts: ActiveModelSerializers::SerializableResource.new(
+        @related_posts,
+        each_serializer: RelatedPostSerializer,
+      ),
+    }
   end
 
   def create
@@ -111,5 +123,42 @@ class Api::SalePostsController < Api::ApiController
     deleted_images.each do |image_id|
       @sale_post.images.find_by(blob_id: image_id).purge
     end
+  end
+
+  def get_related_posts
+    base_price = @sale_post.price.to_f
+    numbers_of_related_posts = 5
+    numbers_of_used = 0
+
+    sale_posts_same_version = SalePost.includes(:sale_post_images, :images_attachments).where(version_id: @sale_post.version_id, status: 'active')
+                                      .where.not(id: @sale_post.id)
+                                      .select("sale_posts.id, sale_posts.title, sale_posts.price, sale_posts.location")
+                                      .order(Arel.sql("ABS(sale_posts.price - #{base_price}) ASC"), created_at: :desc)
+                                      .limit(1)
+    numbers_of_used += sale_posts_same_version.size
+
+    sale_posts_same_model = SalePost.includes(:sale_post_images, :images_attachments).where(model_id: @sale_post.model_id, status: 'active')
+                                    .where.not(id: @sale_post.id)
+                                    .where.not(id: sale_posts_same_version.map{ |p| p[:id] })
+                                    .select("id, title, price, location, ABS(price - #{base_price}) AS price_diff")
+                                    .order(Arel.sql("ABS(sale_posts.price - #{base_price}) ASC"), created_at: :desc)
+                                    .limit(numbers_of_related_posts - numbers_of_used - 2)
+    numbers_of_used += sale_posts_same_model.size
+
+    sale_posts_same_brand = SalePost.includes(:sale_post_images, :images_attachments).where(brand_id: @sale_post.brand_id, status: 'active')
+                                    .where.not(id: @sale_post.id)
+                                    .where.not(id: sale_posts_same_version.map{ |p| p[:id] } + sale_posts_same_model.map{ |p| p[:id] })
+                                    .select("id, title, price, location, ABS(price - #{base_price}) AS price_diff")
+                                    .order(Arel.sql("ABS(sale_posts.price - #{base_price}) ASC"), created_at: :desc)
+                                    .limit(numbers_of_related_posts - numbers_of_used - 2)
+    numbers_of_used += sale_posts_same_brand.size
+
+    new_sale_posts = SalePost.includes(:sale_post_images, :images_attachments).where(status: 'active')
+                              .where.not(id: @sale_post.id)
+                             .select("sale_posts.id, sale_posts.title, sale_posts.price, sale_posts.location")
+                             .order(created_at: :desc)
+                             .limit((numbers_of_used - numbers_of_related_posts).abs) if (numbers_of_related_posts - numbers_of_used) > 0
+
+    sale_posts_same_version + sale_posts_same_model + sale_posts_same_brand + new_sale_posts
   end
 end
