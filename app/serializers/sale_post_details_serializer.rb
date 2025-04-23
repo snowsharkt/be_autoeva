@@ -1,13 +1,10 @@
-class SalePostSerializer < ActiveModel::Serializer
+class SalePostDetailsSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
   attributes :id, :title, :description, :price, :status, :year, :odo, :created_at, :updated_at, :favorited, :images, :location,
              :origin, :fuel, :transmission, :seats
 
   belongs_to :user
-  belongs_to :brand
-  belongs_to :model
-  belongs_to :version
   has_many :sale_post_images
   has_many :comments
 
@@ -39,8 +36,8 @@ class SalePostSerializer < ActiveModel::Serializer
   end
 
   def favorited
-    return false unless current_user
-    object.favorites.exists?(user_id: current_user.id)
+    return false unless scope
+    object.favorites.exists?(user_id: scope.id)
   end
 
   def images

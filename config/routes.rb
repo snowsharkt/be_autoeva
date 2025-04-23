@@ -37,7 +37,11 @@ Rails.application.routes.draw do
     end
     resources :sale_posts do
       resources :sale_post_images, only: [:create, :destroy]
-      resources :favorites, only: [:create]
+      resources :favorites, only: [:create] do
+        collection do
+          delete 'destroy', to: 'favorites#destroy'
+        end
+      end
       resources :comments, only: [:index, :create]
       collection do
         post 'upload', to: 'sale_posts#upload'
@@ -46,7 +50,7 @@ Rails.application.routes.draw do
     end
 
     resources :comments, only: [:show, :update, :destroy]
-    resources :favorites, only: [:index, :destroy]
+    resources :favorites, only: [:index]
 
     resources :brands, only: [:index]
     resources :models, only: [:index]
