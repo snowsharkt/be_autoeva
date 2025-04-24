@@ -41,6 +41,13 @@ class Api::SalePostsController < Api::ApiController
   end
 
   def update
+    if sale_post_params[:brand_id].present? && sale_post_params[:model_id].present? && sale_post_params[:version_id].present?
+      brand = Brand.find_by(id: sale_post_params[:brand_id])
+      model = Model.find_by(id: sale_post_params[:model_id])
+      version = Version.find_by(id: sale_post_params[:version_id])
+      @sale_post.assign_attributes(title: "#{brand&.name} #{model&.name} #{version&.name}")
+    end
+
     if @sale_post.update(sale_post_params)
       update_images_by_blob_ids if params[:images].present?
       render json: @sale_post, status: :ok
