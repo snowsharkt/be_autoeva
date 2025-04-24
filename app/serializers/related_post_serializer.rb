@@ -2,6 +2,7 @@ class RelatedPostSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   attributes :id, :title, :price, :location, :image
   def location
+    return "" if object.location.blank?
     object.location.gsub(/\n.*/m, '').strip
   end
 

@@ -13,7 +13,8 @@ class SalePostDetailsSerializer < ActiveModel::Serializer
   end
 
   def location
-    object.location.gsub(/[\n\t]/, '')
+    return "" if object.location.blank?
+    object.location&.gsub(/[\n\t]/, '')
           .gsub(/Website:.*/, '')
           .squish
   end

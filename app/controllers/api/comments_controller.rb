@@ -7,7 +7,15 @@ class Api::CommentsController < Api::ApiController
   def index
     @sale_post = SalePost.find(params[:sale_post_id])
     @comments = @sale_post.comments.includes(:user).order(created_at: :desc)
-    render json: @comments
+                          .paginate(page: params[:page], per_page: 10)
+    render json: {
+      comments: ActiveModelSerializers::SerializableResource.new(
+        @comments,
+        each_serializer: CommentSerializer,
+      ),
+      current_page: @comments.current_page,
+      total_pages: @comments.total_pages,
+    }
   end
 
   # GET /api/comments/:id
@@ -54,7 +62,7 @@ class Api::CommentsController < Api::ApiController
   end
 
   def authorize_comment_owner!
-    unless current_user.admin? || @comment.user == current_user
+    unless current_user.admin? || @comment.user.id == current_user.id
       render json: { error: 'You are not authorized to perform this action' }, status: :forbidden
     end
   end
