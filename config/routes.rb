@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       collection do
         post 'upload', to: 'sale_posts#upload'
         get 'show_user_post/:id', to: 'sale_posts#show_user_post'
+        get "home", to: "sale_posts#home"
       end
     end
 

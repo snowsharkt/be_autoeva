@@ -2,7 +2,7 @@ class Api::SalePostsController < Api::ApiController
   before_action :set_sale_post, only: [:show, :update, :destroy, :show_user_post]
   before_action :authorize_owner!, only: [:update, :destroy, :show_user_post]
 
-  skip_before_action :authenticate_user!, only: [:upload, :show]
+  skip_before_action :authenticate_user!, only: [:upload, :show, :home]
 
   def index
     @sale_posts = SalePost.includes(:user, :brand, :model, :version, :sale_post_images)
@@ -83,6 +83,14 @@ class Api::SalePostsController < Api::ApiController
 
   def show_user_post
     render json: @sale_post, include: [:brand, :model, :version]
+  end
+
+  def home
+    @sale_posts = SalePost.includes(:user, :sale_post_images)
+                          .where(status: 'active')
+                          .order(created_at: :desc)
+                          .limit(6)
+    render json: @sale_posts, each_serializer: ListSalePostsSerializer, scope: current_user
   end
 
   private
