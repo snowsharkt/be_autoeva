@@ -2,7 +2,7 @@ class Api::SalePostsController < Api::ApiController
   before_action :set_sale_post, only: [:show, :update, :destroy, :show_user_post]
   before_action :authorize_owner!, only: [:update, :destroy, :show_user_post]
 
-  skip_before_action :authenticate_user!, only: [:upload, :show, :home]
+  skip_before_action :authenticate_user!, only: [:upload, :show, :home, :search]
 
   def index
     @sale_posts = SalePost.includes(:user, :brand, :model, :version, :sale_post_images)
@@ -91,6 +91,54 @@ class Api::SalePostsController < Api::ApiController
                           .order(created_at: :desc)
                           .limit(6)
     render json: @sale_posts, each_serializer: ListSalePostsSerializer, scope: current_user
+  end
+
+  def search
+    @sale_posts = SalePost.includes(:user, :sale_post_images, :images_attachments)
+                          .where(status: 'active')
+
+    if params[:query].present?
+      query = "%#{params[:query]}%"
+      @sale_posts = @sale_posts.where("title LIKE :q OR location LIKE :q OR description LIKE :q", q: query)
+    end
+
+    @sale_posts = @sale_posts.where(brand_id: params[:brand_id]) if params[:brand_id].present?
+    @sale_posts = @sale_posts.where(model_id: params[:model_id]) if params[:model_id].present?
+    @sale_posts = @sale_posts.where(version_id: params[:version_id]) if params[:version_id].present?
+    @sale_posts = @sale_posts.where(year: params[:year]) if params[:year].present?
+
+    if params[:odo_min].present? || params[:odo_max].present?
+      @sale_posts = @sale_posts.where("odo >= ?", params[:odo_min].to_i) if params[:odo_min].present?
+      @sale_posts = @sale_posts.where("odo <= ?", params[:odo_max].to_i) if params[:odo_max].present?
+    end
+
+    if params[:price_min].present? || params[:price_max].present?
+      @sale_posts = @sale_posts.where("price >= ?", params[:price_min].to_i) if params[:price_min].present?
+      @sale_posts = @sale_posts.where("price <= ?", params[:price_max].to_i) if params[:price_max].present?
+    end
+
+    case params[:sort]
+    when 'price_asc'
+      @sale_posts = @sale_posts.order(price: :asc)
+    when 'price_desc'
+      @sale_posts = @sale_posts.order(price: :desc)
+    when 'year_asc'
+      @sale_posts = @sale_posts.order(year: :asc)
+    else
+      @sale_posts = @sale_posts.order(created_at: :desc)
+    end
+
+    @sale_posts = @sale_posts.paginate(page: params[:page], per_page: 12)
+
+    render json: {
+      sale_posts: ActiveModelSerializers::SerializableResource.new(
+        @sale_posts,
+        each_serializer: ListSalePostsSerializer,
+        scope: current_user
+      ),
+      current_page: @sale_posts.current_page,
+      total_pages: @sale_posts.total_pages
+    }
   end
 
   private
