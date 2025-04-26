@@ -2,6 +2,7 @@ class Api::CommentsController < Api::ApiController
   before_action :authenticate_user!
   before_action :set_comment, only: [:show, :update, :destroy]
   before_action :authorize_comment_owner!, only: [:update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
 
   # GET /api/sale_posts/:sale_post_id/comments
   def index
