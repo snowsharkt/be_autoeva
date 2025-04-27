@@ -63,4 +63,7 @@ DeviseTokenAuth.setup do |config|
   # send email, set it to true. (This is a setting for compatibility)
   config.send_confirmation_email = true
   config.default_confirm_success_url = "#{ENV["FE_URL"] || "http://localhost:3000"}/verify-success"
+
+  config.require_client_password_reset_token = true
+  config.default_password_reset_url = "#{ENV["FE_URL"] || "http://localhost:3000"}/reset-password"
 end

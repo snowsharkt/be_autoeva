@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :api do
     mount_devise_token_auth_for 'User', at: 'auth', controllers: {
       confirmations: 'api/auth/confirmations',
+      passwords: 'api/auth/passwords',
     }
 
     scope :users do
