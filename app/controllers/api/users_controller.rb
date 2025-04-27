@@ -40,7 +40,7 @@ class Api::UsersController < Api::ApiController
     current_posts = current_user.sale_posts
                                 .includes(:images_attachments, :images_blobs, favorites: :user)
                                 .order(created_at: :desc)
-                                .paginate(page: params[:page], per_page: ENV['PER_PAGE'] || 20)
+                                .paginate(page: params[:page], per_page: ENV['PER_PAGE'] || 10)
     render json: {
       data: ActiveModelSerializers::SerializableResource.new(
         current_posts,

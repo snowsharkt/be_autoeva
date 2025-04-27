@@ -1,13 +1,6 @@
-class ListSalePostsSerializer < ActiveModel::Serializer
+class RelatedPostSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-
-  attributes :id, :title, :price, :status, :year, :odo, :location, :image, :created_at, :updated_at, :favorited
-
-  def favorited
-    return false unless scope
-    object.favorites.exists?(user_id: scope&.id)
-  end
-
+  attributes :id, :title, :price, :location, :image
   def location
     return "" if object.location.blank?
     object.location.gsub(/\n.*/m, '').strip

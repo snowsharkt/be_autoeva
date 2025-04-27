@@ -45,16 +45,22 @@ Rails.application.routes.draw do
     end
     resources :sale_posts do
       resources :sale_post_images, only: [:create, :destroy]
-      resources :favorites, only: [:create]
+      resources :favorites, only: [:create] do
+        collection do
+          delete 'destroy', to: 'favorites#destroy'
+        end
+      end
       resources :comments, only: [:index, :create]
       collection do
         post 'upload', to: 'sale_posts#upload'
         get 'show_user_post/:id', to: 'sale_posts#show_user_post'
+        get "home", to: "sale_posts#home"
+        get "search", to: "sale_posts#search"
       end
     end
 
     resources :comments, only: [:show, :update, :destroy]
-    resources :favorites, only: [:index, :destroy]
+    resources :favorites, only: [:index]
     resources :reports, only: [:index, :create]
 
     resources :brands, only: [:index]

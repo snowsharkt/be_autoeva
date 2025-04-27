@@ -2,7 +2,7 @@ class VersionSerializer < ActiveModel::Serializer
   attributes :id, :info
 
   def info
-    "#{object.name}-#{origin}-#{fuel_type}"
+    "#{object.name} / #{origin} / #{fuel_type}"
   end
 
   def origin
