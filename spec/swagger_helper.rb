@@ -36,6 +36,20 @@ RSpec.configure do |config|
               updated_at: { type: :string, format: :datetime }
             },
             required: ['id', 'email', 'role']
+          },
+          report: {
+            type: :object,
+            properties: {
+              id: { type: :integer },
+              reason: { type: :string },
+              status: { type: :string, enum: ['pending', 'resolved', 'rejected'] },
+              reporter_id: { type: :integer },
+              reportable_type: { type: :string, enum: ['User', 'SalePost'] },
+              reportable_id: { type: :integer },
+              created_at: { type: :string, format: :datetime },
+              updated_at: { type: :string, format: :datetime }
+            },
+            required: ['id', 'reason', 'status', 'reporter_id', 'reportable_type', 'reportable_id']
           }
         },
         securitySchemes: {

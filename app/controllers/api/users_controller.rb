@@ -4,13 +4,13 @@ class Api::UsersController < Api::ApiController
 
   # GET /api/users/:id
   def show
-    render json: { user: @user.as_json(only: [:id, :email, :first_name, :last_name, :role, :created_at]) }
+    render json: { user: @user.as_json(only: [:id, :email, :first_name, :last_name, :role, :phone_number, :created_at]) }
   end
 
   # PUT/PATCH /api/users/:id
   def update
     if @user.update(user_params)
-      render json: { user: @user.as_json(only: [:id, :email, :first_name, :last_name, :role, :created_at]) }
+      render json: { user: @user.as_json(only: [:id, :email, :first_name, :last_name, :role, :phone_number, :created_at]) }
     else
       render json: { errors: @user.errors }, status: :unprocessable_entity
     end
@@ -19,7 +19,7 @@ class Api::UsersController < Api::ApiController
   # GET /api/users/profile
   def profile
     render json: {
-      user: current_user.as_json(only: [:id, :email, :first_name, :last_name, :role, :created_at])
+      user: current_user.as_json(only: [:id, :email, :first_name, :last_name, :role, :phone_number, :created_at])
     }
   end
 
@@ -68,9 +68,9 @@ class Api::UsersController < Api::ApiController
 
   def user_params
     if current_user.admin?
-      params.require(:user).permit(:email, :first_name, :last_name, :role)
+      params.require(:user).permit(:email, :first_name, :last_name, :role, :phone_number)
     else
-      params.require(:user).permit(:first_name, :last_name)
+      params.require(:user).permit(:first_name, :last_name, :phone_number)
     end
   end
 end
