@@ -28,4 +28,10 @@ class User < ApplicationRecord
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
+
+  def reset_password_period_valid?
+    return false unless reset_password_sent_at
+
+    reset_password_sent_at.utc >= (Time.current.utc - self.class.reset_password_within)
+  end
 end
