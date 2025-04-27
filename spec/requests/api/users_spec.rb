@@ -125,7 +125,7 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
-  path '/api/profile' do
+  path '/api/users/profile' do
     get 'Retrieves current user profile' do
       tags 'Users'
       security [bearer_auth: []]
@@ -170,7 +170,7 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
-  path '/api/change_password' do
+  path '/api/users/change_password' do
     post 'Changes user password' do
       tags 'Users'
       security [bearer_auth: []]
@@ -211,6 +211,116 @@ RSpec.describe 'Users API', type: :request do
                    example: {
                      password_confirmation: ["doesn't match Password"]
                    }
+                 }
+               }
+        run_test! do |response|
+          # Empty block - just for documentation
+        end
+      end
+    end
+  end
+
+  path '/api/users/sale_posts' do
+    get 'Retrieves current user sale posts' do
+      tags 'Users'
+      security [bearer_auth: []]
+      parameter name: 'access-token', in: :header, type: :string, required: true
+      parameter name: 'client', in: :header, type: :string, required: true
+      parameter name: 'uid', in: :header, type: :string, required: true
+      parameter name: :page, in: :query, type: :integer, required: false, description: 'Page number for pagination'
+      produces 'application/json'
+
+      response '200', 'posts retrieved' do
+        schema type: :object,
+               properties: {
+                 data: {
+                   type: :array,
+                   items: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       title: { type: :string },
+                       price: { type: :number, format: :float },
+                       status: { type: :string },
+                       created_at: { type: :string, format: :datetime },
+                       images: {
+                         type: :array,
+                         items: { type: :string }
+                       },
+                       favorites_count: { type: :integer },
+                       is_favorited: { type: :boolean }
+                     }
+                   }
+                 },
+                 current_page: { type: :integer },
+                 total_pages: { type: :integer }
+               }
+        run_test! do |response|
+          # Empty block - just for documentation
+        end
+      end
+
+      response '401', 'unauthorized' do
+        schema type: :object,
+               properties: {
+                 errors: {
+                   type: :array,
+                   items: { type: :string },
+                   example: ['Authorized users only.']
+                 }
+               }
+        run_test! do |response|
+          # Empty block - just for documentation
+        end
+      end
+    end
+  end
+
+  path '/api/users/prediction-history' do
+    get 'Retrieves user prediction history' do
+      tags 'Users'
+      security [bearer_auth: []]
+      parameter name: 'access-token', in: :header, type: :string, required: true
+      parameter name: 'client', in: :header, type: :string, required: true
+      parameter name: 'uid', in: :header, type: :string, required: true
+      produces 'application/json'
+
+      response '200', 'prediction history retrieved' do
+        schema type: :object,
+               properties: {
+                 data: {
+                   type: :array,
+                   items: {
+                     type: :object,
+                     properties: {
+                       id: { type: :integer },
+                       images: {
+                         type: :array,
+                         items: { type: :string }
+                       },
+                       brand_name: { type: :string },
+                       model_name: { type: :string },
+                       version_name: { type: :string },
+                       year_of_manufacture: { type: :integer },
+                       condition: { type: :string },
+                       mileage: { type: :integer },
+                       created_at: { type: :string, format: :datetime }
+                     }
+                   }
+                 }
+               }
+        run_test! do |response|
+          # Empty block - just for documentation
+        end
+      end
+
+      response '401', 'unauthorized' do
+        schema type: :object,
+               properties: {
+                 errors: {
+                   type: :array,
+                   items: { type: :string },
+                   example: ['Authorized users only.']
                  }
                }
         run_test! do |response|
