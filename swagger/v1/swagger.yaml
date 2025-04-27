@@ -33,6 +33,41 @@ components:
       - id
       - email
       - role
+    report:
+      type: object
+      properties:
+        id:
+          type: integer
+        reason:
+          type: string
+        status:
+          type: string
+          enum:
+          - pending
+          - resolved
+          - rejected
+        reporter_id:
+          type: integer
+        reportable_type:
+          type: string
+          enum:
+          - User
+          - SalePost
+        reportable_id:
+          type: integer
+        created_at:
+          type: string
+          format: datetime
+        updated_at:
+          type: string
+          format: datetime
+      required:
+      - id
+      - reason
+      - status
+      - reporter_id
+      - reportable_type
+      - reportable_id
   securitySchemes:
     bearer_auth:
       type: http
@@ -789,6 +824,159 @@ paths:
               - version_id
               - year_of_manufacture
               - mileage
+  "/api/reports":
+    post:
+      summary: Creates a report
+      tags:
+      - Reports
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: report created
+        '422':
+          description: invalid request
+        '404':
+          description: reportable not found
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                report:
+                  type: object
+                  properties:
+                    reason:
+                      type: string
+                      example: Inappropriate content
+                    reportable_type:
+                      type: string
+                      enum:
+                      - User
+                      - SalePost
+                      example: User
+                    reportable_id:
+                      type: integer
+                      example: 1
+                  required:
+                  - reason
+                  - reportable_type
+                  - reportable_id
+              required:
+              - report
+    get:
+      summary: Lists all reports (admin only)
+      tags:
+      - Reports
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: reports retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        reason:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                          - pending
+                          - resolved
+                          - rejected
+                        reporter:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            email:
+                              type: string
+                            full_name:
+                              type: string
+                        reportable_type:
+                          type: string
+                        reportable_id:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: datetime
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+        '403':
+          description: forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Not authorized
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
   "/api/sale_posts":
     get:
       summary: Lists all sale posts
@@ -1328,6 +1516,8 @@ paths:
                         type: string
                       role:
                         type: string
+                      phone_number:
+                        type: string
                       created_at:
                         type: string
                         format: datetime
@@ -1391,6 +1581,9 @@ paths:
                     last_name:
                       type: string
                       example: Doe
+                    phone_number:
+                      type: string
+                      example: "+1234567890"
                     email:
                       type: string
                       example: john.doe@example.com
@@ -1398,7 +1591,7 @@ paths:
                       type: string
                       example: user
                       description: Only admins can update role
-  "/api/profile":
+  "/api/users/profile":
     get:
       summary: Retrieves current user profile
       tags:
@@ -1442,6 +1635,8 @@ paths:
                         type: string
                       role:
                         type: string
+                      phone_number:
+                        type: string
                       created_at:
                         type: string
                         format: datetime
@@ -1458,7 +1653,7 @@ paths:
                       type: string
                     example:
                     - Authorized users only.
-  "/api/change_password":
+  "/api/users/change_password":
     post:
       summary: Changes user password
       tags:
@@ -1505,3 +1700,152 @@ paths:
               - current_password
               - password
               - password_confirmation
+  "/api/users/sale_posts":
+    get:
+      summary: Retrieves current user sale posts
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: posts retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        price:
+                          type: number
+                          format: float
+                        status:
+                          type: string
+                        created_at:
+                          type: string
+                          format: datetime
+                        images:
+                          type: array
+                          items:
+                            type: string
+                        favorites_count:
+                          type: integer
+                        is_favorited:
+                          type: boolean
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+  "/api/users/prediction-history":
+    get:
+      summary: Retrieves user prediction history
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: prediction history retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        images:
+                          type: array
+                          items:
+                            type: string
+                        brand_name:
+                          type: string
+                        model_name:
+                          type: string
+                        version_name:
+                          type: string
+                        year_of_manufacture:
+                          type: integer
+                        condition:
+                          type: string
+                        mileage:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: datetime
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.

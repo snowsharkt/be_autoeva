@@ -8,6 +8,14 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
     resources :users
     resources :comments, only: [:index, :show, :destroy]
+    resources :reports, only: [:index, :show, :update, :destroy] do
+      member do
+        post 'resolve'
+        post 'reject'
+        post 'ban_user'
+        post 'delete_post'
+      end
+    end
 
     root to: 'dashboard#index'
   end
@@ -54,6 +62,7 @@ Rails.application.routes.draw do
 
     resources :comments, only: [:show, :update, :destroy]
     resources :favorites, only: [:index]
+    resources :reports, only: [:index, :create]
 
     resources :brands, only: [:index]
     resources :models, only: [:index]

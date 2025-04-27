@@ -14,11 +14,23 @@ class User < ApplicationRecord
   has_many :received_reports, as: :reportable, class_name: 'Report', dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
-  validates :role, presence: true, inclusion: { in: %w(user admin) }
-  validates :phone_number, presence: true, uniqueness: true
+  validates :role, presence: true, inclusion: { in: %w(user admin banned) }
+  validates :phone_number, uniqueness: true, allow_blank: true
 
   def admin?
     role == 'admin'
+  end
+
+  def banned?
+    role == 'banned'
+  end
+
+  def active_for_authentication?
+    super && !banned?
+  end
+
+  def inactive_message
+    banned? ? :banned : super
   end
 
   def full_name
