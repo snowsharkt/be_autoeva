@@ -23,6 +23,7 @@ RSpec.describe 'Users API', type: :request do
                      first_name: { type: :string },
                      last_name: { type: :string },
                      role: { type: :string },
+                     phone_number: { type: :string },
                      created_at: { type: :string, format: :datetime }
                    },
                    required: ['id', 'email', 'role']
@@ -59,6 +60,7 @@ RSpec.describe 'Users API', type: :request do
             properties: {
               first_name: { type: :string, example: 'John' },
               last_name: { type: :string, example: 'Doe' },
+              phone_number: { type: :string, example: '+1234567890' },
               email: { type: :string, example: 'john.doe@example.com' },
               role: { type: :string, example: 'user', description: 'Only admins can update role' }
             }
@@ -77,6 +79,7 @@ RSpec.describe 'Users API', type: :request do
                      first_name: { type: :string },
                      last_name: { type: :string },
                      role: { type: :string },
+                     phone_number: { type: :string },
                      created_at: { type: :string, format: :datetime }
                    }
                  }
@@ -145,6 +148,7 @@ RSpec.describe 'Users API', type: :request do
                      first_name: { type: :string },
                      last_name: { type: :string },
                      role: { type: :string },
+                     phone_number: { type: :string },
                      created_at: { type: :string, format: :datetime }
                    }
                  }

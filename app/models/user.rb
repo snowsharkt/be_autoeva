@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, inclusion: { in: %w(user admin banned) }
-  validates :phone_number, presence: true, uniqueness: true
+  validates :phone_number, uniqueness: true, allow_blank: true
 
   def admin?
     role == 'admin'
