@@ -4,4 +4,6 @@ class Report < ApplicationRecord
 
   validates :reason, presence: true
   validates :status, presence: true, inclusion: { in: %w(pending resolved rejected) }
+
+  has_many_attached :images
 end

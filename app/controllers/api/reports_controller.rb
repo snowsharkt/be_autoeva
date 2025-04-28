@@ -8,6 +8,7 @@ class Api::ReportsController < Api::ApiController
     @report.status = 'pending'
 
     if @report.save
+      create_images_by_blob_ids if params[:report][:images].present?
       render json: @report, status: :created, serializer: ReportSerializer
     else
       render json: { errors: @report.errors }, status: :unprocessable_entity
@@ -30,5 +31,12 @@ class Api::ReportsController < Api::ApiController
 
   def report_params
     params.require(:report).permit(:reason)
+  end
+
+  def create_images_by_blob_ids
+    params[:report][:images].each do |image_id|
+      upload_image = ActiveStorage::Blob.find_by(id: image_id)
+      @report.images.attach(upload_image) if upload_image.present?
+    end
   end
 end
