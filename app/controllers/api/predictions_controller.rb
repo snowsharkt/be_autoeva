@@ -8,7 +8,7 @@ class Api::PredictionsController < Api::ApiController
     response = predict_service.predict
 
     if response[:status] == 200
-      save_prediction_history car_info.name, prediction_params[:year_of_manufacture], prediction_params[:mileage], response["predicted_price"], current_api_user.id  if current_api_user.present?
+      save_prediction_history(car_info.name, prediction_params[:year_of_manufacture], prediction_params[:mileage], response[:body]["predicted_price"], current_api_user.id)  if current_api_user.present?
       render json: response, status: :ok
     else
       render json: response, status: :bad_request
