@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Login - AutoEva</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "devise", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      max-width: 150px;
+      margin-bottom: 1.5rem;
+    }
+    .auth-wrapper {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-wrapper">
+    <div class="text-center mb-4">
+      <% if File.exist?(Rails.root.join('app', 'assets', 'images', 'logo.png')) %>
+        <%= image_tag 'logo.png', alt: 'Logo', class: 'logo' %>
+      <% else %>
+        <h1 class="h3 mb-3 fw-normal text-primary">AutoEva Admin</h1>
+      <% end %>
+    </div>
+
+    <% if notice %>
+      <div class="container">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= notice %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="container">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= alert %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+    <div class="container mt-5">
+      <footer class="text-center text-muted">
+        <p>&copy; <%= Date.today.year %> AutoEva. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
