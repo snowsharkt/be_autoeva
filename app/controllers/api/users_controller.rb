@@ -52,6 +52,15 @@ class Api::UsersController < Api::ApiController
     }
   end
 
+  def prediction_history
+    @prediction_history = current_user.prediction_histories.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    render json: {
+      prediction_history: @prediction_history,
+      current_page: @prediction_history.current_page,
+      total_pages: @prediction_history.total_pages
+    }
+  end
+
   private
 
   def set_user
