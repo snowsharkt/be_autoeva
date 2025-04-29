@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :favorite_posts, through: :favorites, source: :sale_post
   has_many :reports, foreign_key: :reporter_id, dependent: :nullify
   has_many :received_reports, as: :reportable, class_name: 'Report', dependent: :destroy
+  has_many :prediction_histories, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validates :role, presence: true, inclusion: { in: %w(user admin banned) }

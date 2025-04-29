@@ -15,6 +15,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.prod
+    volumes:
+      - storage_data:/app/storage
     environment:
       DATABASE_HOST: db
       RAILS_SERVE_STATIC_FILES: "true"
@@ -27,3 +29,4 @@ services:
 
 volumes:
   mysql_data:
+  storage_data:
