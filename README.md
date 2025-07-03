@@ -1,24 +1,24 @@
-# README
+# Auto Eva Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## API docs
 
-Things you may want to cover:
+- Swagger: `http://localhost:3000/api-docs`
 
-* Ruby version
+## Setup for Development:
+- Create `.env` file from `.env.example` and set the environment variables
+- `docker compose build`
+- `docker compose up`
 
-* System dependencies
+## Setup for Production:
 
-* Configuration
+- `echo "DATABASE_PASSWORD=your_secure_password" > .env`
+- `echo "SECRET_KEY_BASE=$(docker-compose exec web rails secret)" >> .env`
 
-* Database creation
+    ### Build and run
+    - `docker compose -f docker-compose.prod.yml build`
+    - `docker compose -f docker-compose.prod.yml up -d`
 
-* Database initialization
+## Data Import
+The application comes with pre-defined car brands, models, and versions data that can be loaded using rake tasks. To import all data, run `rails db:seed`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+These tasks can be run after database setup to populate initial vehicle data.

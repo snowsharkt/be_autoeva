@@ -1,0 +1,18 @@
+vi:
+  devise:
+    confirmations:
+      confirmed: "Xác nhận tài khoản thành công."
+      send_instructions: "Bạn sẽ nhận được email hướng dẫn xác nhận tài khoản trong vài phút nữa."
+      send_paranoid_instructions: "Nếu email của bạn có trong hệ thống, bạn sẽ nhận được email hướng dẫn xác nhận tài khoản trong vài phút nữa."
+      user_not_found: "Không tìm thấy người dùng với email này."
+      missing_email: "Vui lòng cung cấp địa chỉ email."
+    failure:
+      already_authenticated: "Bạn đã đăng nhập."
+      inactive: "Tài khoản của bạn chưa được kích hoạt."
+      invalid: "%{authentication_keys} hoặc mật khẩu không hợp lệ."
+      locked: "Tài khoản của bạn đã bị khóa."
+      last_attempt: "Bạn còn một lần thử nữa trước khi tài khoản bị khóa."
+      not_found_in_database: "%{authentication_keys} hoặc mật khẩu không hợp lệ."
+      timeout: "Phiên làm việc đã hết hạn, vui lòng đăng nhập lại."
+      unauthenticated: "Bạn cần đăng nhập hoặc đăng ký trước khi tiếp tục."
+      unconfirmed: "Bạn cần xác nhận email trước khi tiếp tục."

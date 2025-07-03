@@ -1,0 +1,1851 @@
+---
+openapi: 3.0.1
+info:
+  title: API Documentation
+  version: v1
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone_number:
+          type: string
+        role:
+          type: string
+          enum:
+          - user
+          - admin
+        created_at:
+          type: string
+          format: datetime
+        updated_at:
+          type: string
+          format: datetime
+      required:
+      - id
+      - email
+      - role
+    report:
+      type: object
+      properties:
+        id:
+          type: integer
+        reason:
+          type: string
+        status:
+          type: string
+          enum:
+          - pending
+          - resolved
+          - rejected
+        reporter_id:
+          type: integer
+        reportable_type:
+          type: string
+          enum:
+          - User
+          - SalePost
+        reportable_id:
+          type: integer
+        created_at:
+          type: string
+          format: datetime
+        updated_at:
+          type: string
+          format: datetime
+      required:
+      - id
+      - reason
+      - status
+      - reporter_id
+      - reportable_type
+      - reportable_id
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Use the access-token, client, and uid headers for authentication
+servers:
+- url: http://localhost:3000
+paths:
+  "/api/auth":
+    post:
+      summary: Registers a new user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: password123
+                password_confirmation:
+                  type: string
+                  example: password123
+                first_name:
+                  type: string
+                  example: John
+                last_name:
+                  type: string
+                  example: Doe
+                phone_number:
+                  type: string
+                  example: '1234567890'
+              required:
+              - email
+              - password
+              - password_confirmation
+              - first_name
+              - last_name
+              - phone_number
+  "/api/auth/sign_in":
+    post:
+      summary: Signs in a user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: user signed in
+          headers:
+            access-token:
+              schema:
+                type: string
+              description: Authentication token
+            client:
+              schema:
+                type: string
+              description: Client identifier
+            uid:
+              schema:
+                type: string
+              description: User identifier (email)
+        '401':
+          description: invalid credentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: password123
+              required:
+              - email
+              - password
+  "/api/auth/validate_token":
+    get:
+      summary: Validates authentication token
+      tags:
+      - Authentication
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: token is valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    "$ref": "#/components/schemas/user"
+        '401':
+          description: token is invalid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Invalid login credentials
+  "/api/auth/sign_out":
+    delete:
+      summary: Signs out current user
+      tags:
+      - Authentication
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: signed out successfully
+        '404':
+          description: user not found
+  "/api/sale_posts/{sale_post_id}/comments":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Lists all comments for a sale post
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: comments found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    content:
+                      type: string
+                    created_at:
+                      type: string
+                      format: datetime
+                    updated_at:
+                      type: string
+                      format: datetime
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                        name:
+                          type: string
+                    sale_post:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                  required:
+                  - id
+                  - content
+                  - created_at
+                  - updated_at
+                  - user
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+        '404':
+          description: sale post not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Sale post not found
+    post:
+      summary: Creates a comment on a sale post
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: comment created
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                  required:
+                  - content
+              required:
+              - comment
+  "/api/comments/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Comment ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a specific comment
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: comment found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  content:
+                    type: string
+                  created_at:
+                    type: string
+                    format: datetime
+                  updated_at:
+                    type: string
+                    format: datetime
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      name:
+                        type: string
+                  sale_post:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      title:
+                        type: string
+                required:
+                - id
+                - content
+                - created_at
+                - updated_at
+                - user
+                - sale_post
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+        '404':
+          description: comment not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Comment not found
+    patch:
+      summary: Updates a comment
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: comment updated
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: comment not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: object
+                  properties:
+                    content:
+                      type: string
+                  required:
+                  - content
+              required:
+              - comment
+    delete:
+      summary: Deletes a comment
+      tags:
+      - Comments
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: comment deleted
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: comment not found
+  "/api/auth/confirmation":
+    post:
+      summary: Resend confirmation instructions
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: confirmation instructions sent
+        '404':
+          description: user not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+              required:
+              - email
+    get:
+      summary: Confirm email address
+      tags:
+      - Authentication
+      parameters:
+      - name: confirmation_token
+        in: query
+        required: true
+        description: Token received in confirmation email
+        schema:
+          type: string
+      - name: redirect_url
+        in: query
+        required: false
+        description: URL to redirect after confirmation (optional)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: email confirmed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Your email address has been successfully confirmed.
+        '422':
+          description: invalid or expired token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Confirmation token is invalid or has expired. Please request
+                      a new one.
+  "/api/favorites":
+    get:
+      summary: Lists all favorites for current user
+      tags:
+      - Favorites
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: favorites found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    created_at:
+                      type: string
+                      format: datetime
+                    sale_post:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: number
+                        status:
+                          type: string
+                        year:
+                          type: integer
+                        odo:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: datetime
+                        updated_at:
+                          type: string
+                          format: datetime
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                  required:
+                  - id
+                  - created_at
+                  - sale_post
+                  - user
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+  "/api/favorites/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Favorite ID
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Removes a post from favorites
+      tags:
+      - Favorites
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: favorite removed
+        '401':
+          description: unauthorized
+        '404':
+          description: favorite not found
+  "/api/sale_posts/{sale_post_id}/favorites":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Adds a post to favorites
+      tags:
+      - Favorites
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: favorite created
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
+  "/api/predicts":
+    post:
+      summary: Predict price
+      tags:
+      - Pridiction
+      parameters: []
+      responses:
+        '200':
+          description: success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                brand_id:
+                  type: integer
+                  example: 1
+                model_id:
+                  type: integer
+                  example: 1
+                version_id:
+                  type: integer
+                  example: 1
+                year_of_manufacture:
+                  type: integer
+                  example: 2020
+                mileage:
+                  type: integer
+                  example: 10000
+              required:
+              - brand_id
+              - model_id
+              - version_id
+              - year_of_manufacture
+              - mileage
+  "/api/reports":
+    post:
+      summary: Creates a report
+      tags:
+      - Reports
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: report created
+        '422':
+          description: invalid request
+        '404':
+          description: reportable not found
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                report:
+                  type: object
+                  properties:
+                    reason:
+                      type: string
+                      example: Inappropriate content
+                    reportable_type:
+                      type: string
+                      enum:
+                      - User
+                      - SalePost
+                      example: User
+                    reportable_id:
+                      type: integer
+                      example: 1
+                  required:
+                  - reason
+                  - reportable_type
+                  - reportable_id
+              required:
+              - report
+    get:
+      summary: Lists all reports (admin only)
+      tags:
+      - Reports
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: reports retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        reason:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                          - pending
+                          - resolved
+                          - rejected
+                        reporter:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            email:
+                              type: string
+                            full_name:
+                              type: string
+                        reportable_type:
+                          type: string
+                        reportable_id:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: datetime
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+        '403':
+          description: forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Not authorized
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+  "/api/sale_posts":
+    get:
+      summary: Lists all sale posts
+      tags:
+      - Sale Posts
+      responses:
+        '200':
+          description: sale posts found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    price:
+                      type: number
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - sold
+                    year:
+                      type: integer
+                    odo:
+                      type: integer
+                    created_at:
+                      type: string
+                      format: datetime
+                    updated_at:
+                      type: string
+                      format: datetime
+                    user:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        email:
+                          type: string
+                    brand:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    model:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    version:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                    sale_post_images:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          image_url:
+                            type: string
+                  required:
+                  - id
+                  - title
+                  - status
+                  - user
+                  - brand
+                  - model
+                  - version
+    post:
+      summary: Creates a sale post
+      tags:
+      - Sale Posts
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: sale post created
+        '401':
+          description: unauthorized
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sale_post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: 2020 Toyota Land Cruiser VX
+                    description:
+                      type: string
+                      example: Excellent condition, one owner
+                    price:
+                      type: number
+                      example: 50000
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - sold
+                      example: active
+                    year:
+                      type: integer
+                      example: 2020
+                    odo:
+                      type: integer
+                      example: 15000
+                    brand_id:
+                      type: integer
+                      example: 1
+                    model_id:
+                      type: integer
+                      example: 1
+                    version_id:
+                      type: integer
+                      example: 1
+                  required:
+                  - title
+                  - status
+                  - brand_id
+                  - model_id
+                  - version_id
+                images:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - http://example.com/image1.jpg
+                  - http://example.com/image2.jpg
+              required:
+              - sale_post
+  "/api/sale_posts/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a sale post
+      tags:
+      - Sale Posts
+      responses:
+        '200':
+          description: sale post found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  price:
+                    type: number
+                  status:
+                    type: string
+                  year:
+                    type: integer
+                  odo:
+                    type: integer
+                  user_id:
+                    type: integer
+                  brand_id:
+                    type: integer
+                  model_id:
+                    type: integer
+                  version_id:
+                    type: integer
+                  created_at:
+                    type: string
+                    format: datetime
+                  updated_at:
+                    type: string
+                    format: datetime
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                  brand:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  model:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  version:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                  sale_post_images:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        image_url:
+                          type: string
+                  comments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        content:
+                          type: string
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            email:
+                              type: string
+        '404':
+          description: sale post not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Sale post not found
+    put:
+      summary: Updates a sale post
+      tags:
+      - Sale Posts
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: sale post updated
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sale_post:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      example: Updated Toyota Land Cruiser VX
+                    description:
+                      type: string
+                      example: Updated description
+                    price:
+                      type: number
+                      example: 48000
+                    status:
+                      type: string
+                      enum:
+                      - active
+                      - sold
+                      example: sold
+                    year:
+                      type: integer
+                      example: 2020
+                    odo:
+                      type: integer
+                      example: 20000
+                    brand_id:
+                      type: integer
+                      example: 1
+                    model_id:
+                      type: integer
+                      example: 1
+                    version_id:
+                      type: integer
+                      example: 1
+                images:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - http://example.com/newimage1.jpg
+              required:
+              - sale_post
+    delete:
+      summary: Deletes a sale post
+      tags:
+      - Sale Posts
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: sale post deleted
+        '401':
+          description: unauthorized
+        '403':
+          description: forbidden
+        '404':
+          description: sale post not found
+        '422':
+          description: unprocessable entity
+  "/api/sale_posts/{sale_post_id}/sale_post_images":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    post:
+      summary: Adds images to a sale post
+      tags:
+      - Sale Post Images
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: image created
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sale_post_image:
+                  type: object
+                  properties:
+                    image_url:
+                      type: string
+                      example: http://example.com/image.jpg
+                  required:
+                  - image_url
+              required:
+              - sale_post_image
+  "/api/sale_posts/{sale_post_id}/sale_post_images/{id}":
+    parameters:
+    - name: sale_post_id
+      in: path
+      description: Sale Post ID
+      required: true
+      schema:
+        type: integer
+    - name: id
+      in: path
+      description: Sale Post Image ID
+      required: true
+      schema:
+        type: integer
+    delete:
+      summary: Deletes a sale post image
+      tags:
+      - Sale Post Images
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: image deleted
+        '401':
+          description: unauthorized
+        '404':
+          description: sale post or image not found
+  "/api/users/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: User ID
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: Retrieves a user
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      role:
+                        type: string
+                      phone_number:
+                        type: string
+                      created_at:
+                        type: string
+                        format: datetime
+                    required:
+                    - id
+                    - email
+                    - role
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: User not found
+    put:
+      summary: Updates a user
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user updated
+        '403':
+          description: not authorized
+        '404':
+          description: user not found
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    first_name:
+                      type: string
+                      example: John
+                    last_name:
+                      type: string
+                      example: Doe
+                    phone_number:
+                      type: string
+                      example: "+1234567890"
+                    email:
+                      type: string
+                      example: john.doe@example.com
+                    role:
+                      type: string
+                      example: user
+                      description: Only admins can update role
+  "/api/users/profile":
+    get:
+      summary: Retrieves current user profile
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: profile retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      role:
+                        type: string
+                      phone_number:
+                        type: string
+                      created_at:
+                        type: string
+                        format: datetime
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+  "/api/users/change_password":
+    post:
+      summary: Changes user password
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: password changed
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current_password:
+                  type: string
+                  example: current123
+                password:
+                  type: string
+                  example: new123
+                password_confirmation:
+                  type: string
+                  example: new123
+              required:
+              - current_password
+              - password
+              - password_confirmation
+  "/api/users/sale_posts":
+    get:
+      summary: Retrieves current user sale posts
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        description: Page number for pagination
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: posts retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        title:
+                          type: string
+                        price:
+                          type: number
+                          format: float
+                        status:
+                          type: string
+                        created_at:
+                          type: string
+                          format: datetime
+                        images:
+                          type: array
+                          items:
+                            type: string
+                        favorites_count:
+                          type: integer
+                        is_favorited:
+                          type: boolean
+                  current_page:
+                    type: integer
+                  total_pages:
+                    type: integer
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
+  "/api/users/prediction-history":
+    get:
+      summary: Retrieves user prediction history
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: access-token
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: client
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: uid
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: prediction history retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        images:
+                          type: array
+                          items:
+                            type: string
+                        brand_name:
+                          type: string
+                        model_name:
+                          type: string
+                        version_name:
+                          type: string
+                        year_of_manufacture:
+                          type: integer
+                        condition:
+                          type: string
+                        mileage:
+                          type: integer
+                        created_at:
+                          type: string
+                          format: datetime
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example:
+                    - Authorized users only.
